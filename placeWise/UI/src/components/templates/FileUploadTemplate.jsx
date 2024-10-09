@@ -5,15 +5,18 @@ import MultipleFileUpload from '../molecules/MultipleFileUpload';
 import FileUpload from '../molecules/FileUpload';
 import SaveButton from '../atoms/SaveButton';
 import CancelButton from '../atoms/CancelButton';
+import ImageUpload from '../molecules/ImageUpload';
+import VideoUpload from '../molecules/VideoUpload';
+import DocumentUpload from '../molecules/DocumentUpload';
 
 const FileUploadTemplate = () => (
-  <div className="row-span-2 block font-medium text-gray-900">
+  <div className="block font-medium text-gray-900">
     <h2>Fotos de la propiedad</h2>
-    <MultipleFileUpload />
+    <ImageUpload />
     <h2>Videos de la propiedad</h2>
-    <MultipleFileUpload />
+    <VideoUpload />
     <h2>Documentos de la propiedad</h2>
-    <MultipleFileUpload />
+    <DocumentUpload />
     <h2>Planos de la propiedad</h2>
     <MultipleFileUpload />
     <h2>Experiencias del sitio/Recorridos por la zona</h2>
