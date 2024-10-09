@@ -1,0 +1,30 @@
+{
+    "id": 0,
+    "idPromotor": 0,
+    "titulo": "",
+    "ubicacion": {
+        "direccion": "",
+        "geolocalizacion": {
+            "latitud": 0.0,
+            "longitud": 0.0
+        }
+    },
+    "descripcion": "",
+    "estatus": "",
+    "bitacora": [
+        {
+            "fechaEvento": "YYYY-MM-DD",
+            "descripcionEvento": "",
+            "usuarioResponsable": ""
+        }
+    ],
+    "documentos": [
+        {
+            "nombre": "",
+            "tipo": " aca lo dejamos como tipos genericos que pueden cambiar ya que no sabemos cuales",
+            "fechaEmision": "YYYY-MM-DD",
+            "fechaVencimiento": "YYYY-MM-DD",
+            "emitidoPor": ""
+        }
+    ]
+}
