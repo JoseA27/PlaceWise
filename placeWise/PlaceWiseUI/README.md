@@ -109,7 +109,7 @@ Funciones auxiliares y de utilidad.
 #### **.gitignore**: 
 Archivo de configuración para ignorar carpetas innecesarias en Git, como node_modules.
 
-#### **package.json**: 
+#### **package-lock.json**: 
 Congela las versiones exactas de las dependencias para asegurar consistencia, optimiza la instalación y garantiza la integridad de los paquetes.
 
 #### **package.json**: 
