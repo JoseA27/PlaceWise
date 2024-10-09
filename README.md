@@ -264,3 +264,18 @@ Administradores del sistema:
 
 La documentación debe mantenerse actualizada en tiempo real utilizando un sistema de control de versiones, como Git, asegurando que cualquier cambio en el código o en los procedimientos sea reflejado inmediatamente en la documentación.
 Para garantizar que la documentación esté siempre alineada con el estado actual del sistema, se integrará el proceso de CI/CD. Cada nueva funcionalidad o actualización del sistema debe incluir automáticamente una actualización de la documentación correspondiente antes de ser aprobada para producción. Los desarrolladores y administradores pueden utilizar herramientas para generar documentación actualizada automáticamente cada vez que se realicen cambios en el repositorio de código.
+
+
+# Diseño del Frontend
+
+## UI
+![alt text](imagenes/PantallaSubirPropiedad.png)
+![alt text](imagenes/PantallaAgregarMedia.png)
+
+## Diagrama de capas
+
+## Diagrama de clases
+
+![alt text](imagenes/Diagrama%20de%20Clases%20FE.jpg)
+
+## Boilerplate
