@@ -269,8 +269,45 @@ Para garantizar que la documentación esté siempre alineada con el estado actua
 # Diseño del Frontend
 
 ## UI
+
+### Subir Propiedad
 ![alt text](imagenes/PantallaSubirPropiedad.png)
+
+### Descripción y Acciones:
+
+### Acciones del Usuario:
+
+- **Completar Formulario**: Los campos que el usuario debe llenar incluyen Nombre de la Propiedad, Dirección, País, Estado/Provincia, Ciudad, Código Postal, Tipo de Propiedad, Precio y Descripción.
+Botón "Agregar Media": Una vez completado el formulario, el usuario puede hacer clic en el botón "Agregar Media" para proceder a la pantalla de carga de archivos.
+Mensajes de Error:
+
+- **Campos Requeridos**: Si el usuario intenta avanzar sin completar los campos requeridos (marcados como obligatorios), se mostrará un mensaje de error bajo el campo faltante.
+Formato Incorrecto: Si el usuario ingresa datos en un formato incorrecto (por ejemplo, letras en el campo de Precio), el sistema indicará el error específico bajo el campo afectado.
+
+### Mensajes de Confirmación:
+
+- **Datos Guardados Correctamente**: Una vez que se validan y guardan los datos, aparece un mensaje de confirmación indicando que la información se guardó con éxito y el usuario será redirigido a la pantalla "Agregar Media".
+
+### Agregar Contenido multimedia
 ![alt text](imagenes/PantallaAgregarMedia.png)
+
+### Descripción y Acciones:
+
+### Acciones del Usuario:
+
+- **Subir Archivos (Imagenes, Videos, Documentos, Planos y Vista 3D)**: Cada sección tiene un botón "+" para permitir al usuario agregar archivos específicos. Para cada archivo subido, se muestra una vista previa.
+Los usuarios pueden cargar imágenes de la propiedad, videos, documentos, planos, y archivos STL para la vista 3D de la propiedad.
+### Botones de Acción (Guardar, Cancelar):
+- **Guardar Cambios**: Guarda todas las modificaciones y sube los archivos, mostrando un mensaje de confirmación al completar el proceso.
+- **Cancelar**: Cancela la acción y redirige al usuario de regreso a la pantalla anterior sin guardar.
+
+### Mensajes de Error:
+- **Formato de Archivo Incorrecto**: Si el usuario intenta cargar un archivo en un formato no compatible, el sistema mostrará un mensaje indicando los formatos permitidos para cada tipo de archivo.
+- **Tamaño Excesivo**: Si el archivo excede el tamaño máximo permitido, el sistema indicará el error y no permitirá la carga.
+
+### Mensajes de Confirmación:
+- **Archivos Subidos Correctamente**: Al finalizar la carga de archivos, un mensaje de éxito confirma que los archivos se subieron exitosamente.
+- **Acción Cancelada**: Al hacer clic en cancelar, se muestra un mensaje indicando que la acción ha sido cancelada y se redirige al usuario a la pantalla de inicio o a la pantalla anterior.
 
 ## Diagrama de capas
 
@@ -279,3 +316,5 @@ Para garantizar que la documentación esté siempre alineada con el estado actua
 ![alt text](imagenes/Diagrama%20de%20Clases%20FE.jpg)
 
 ## Boilerplate
+
+
