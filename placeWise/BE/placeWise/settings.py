@@ -120,17 +120,6 @@ DATABASES = {
 print(DATABASES)
 
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379/1",  # 'redis' es el nombre del servicio en Docker
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        },
-        "TIMEOUT": 60 * 5,  # Tiempo en segundos para que expire el caché (5 minutos en este caso)
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
