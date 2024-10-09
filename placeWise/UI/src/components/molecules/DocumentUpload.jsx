@@ -17,7 +17,7 @@ const DocumentUpload = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 mt-4">
       <div className="flex flex-wrap space-x-4">
         {documents.map((document, index) => (
           <div key={index} className="relative w-24 h-24 border border-gray-300 mb-4 flex flex-col items-center justify-center bg-gray-100">

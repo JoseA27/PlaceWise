@@ -18,13 +18,9 @@ const CreatePropertyForm = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="max-w-2xl px-4 mx-auto">
         <form action="#">
-          <div className="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
+          <div className="grid gap-4 mb-4">
             <InputField label="Nombre de la propiedad" type="text" name="name" id="name" placeholder="Escriba el nombre de la propiedad" required />
-            <InputField label="Dirección" type="text" name="address" id="address" placeholder="Escriba la dirección" required />
-            <InputField label="País" type="text" name="pais" id="pais" placeholder="Escriba el país" required />
-            <InputField label="Estado/Provincia" type="text" name="estado" id="estado" placeholder="Escriba el estado o provincia" required />
-            <InputField label="Ciudad" type="text" name="ciudad" id="ciudad" placeholder="Escriba la ciudad" required />
-            <InputField label="ZIP/Código Postal" type="number" name="zip" id="zip" placeholder="30107" required />
+            <TextAreaField label="Dirección" type="text" name="address" id="address" placeholder="Escriba la dirección" required />
             <SelectField label="Tipo de propiedad" id="propertyType" options={propertyTypes} />
             <InputField label="Precio" type="number" name="price" id="price" placeholder="$299" required />
             <TextAreaField label="Descripción" id="descripcion" placeholder="Escriba una descripción de la propiedad..." rows={8} />
