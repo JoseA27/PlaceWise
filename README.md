@@ -317,4 +317,6 @@ Los usuarios pueden cargar imágenes de la propiedad, videos, documentos, planos
 
 ## Boilerplate
 
+Link al README del boilerplate de UI: https://github.com/JoseA27/PlaceWise/blob/main/placeWise/PlaceWiseUI/README.md
+
 
