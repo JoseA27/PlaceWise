@@ -41,16 +41,31 @@ PlaceWiseUI/
 │   │   └── VideoUpload.jsx
 │   ├── organisms/
 │   │   └── Header.jsx
+│   ├── pages/
+│   │   ├── UploadMediaPage.jsx
+│   │   └── UploadPropertyPage.jsx
 │   └── templates/
 │       ├── FileUploadTemplate.jsx
 │       ├── MainLayout.jsx
 │       └── PropertyFormTemplate.jsx
-├── pages/
-│   ├── UploadMediaPage.jsx
-│   └── UploadPropertyPage.jsx
+├── services/
+│   ├── apiService.js
+│   ├── propertyService.js
+│   └── mediaService.js
+├── auth/
+│   ├── AuthContext.jsx
+│   ├── useAuth.js
+│   └── PrivateRoute.jsx
+├── hooks/
+│   ├── useForm.js
+│   └── useMediaUpload.js
+├── context/
+│   └── GlobalContext.jsx
 ├── styles/
 │   └── tailwind.css
 ├── utils/
+│   ├── helpers.js
+│   └── validators.js
 ├── .gitignore
 ├── package-lock.json
 ├── package.json

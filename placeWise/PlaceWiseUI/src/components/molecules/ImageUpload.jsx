@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 const ImageUpload = () => {
   const [images, setImages] = useState([]);
 
-  // Maneja la carga de una nueva imagen
   const handleImageChange = (event) => {
     const files = Array.from(event.target.files);
     const newImages = files.map((file) => URL.createObjectURL(file));
@@ -14,13 +13,14 @@ const ImageUpload = () => {
 
   return (
     <div className="flex flex-col space-y-4 mt-4">
-      <div className="flex flex-wrap space-x-4">
+      {/* Contenedor responsivo para scroll horizontal */}
+      <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory custom-scrollbar md:flex-nowrap md:w-full w-screen">
         {images.map((image, index) => (
-          <div key={index} className="relative w-24 h-24 border border-gray-300 mb-4">
+          <div key={index} className="relative flex-shrink-0 w-32 h-32 md:w-24 md:h-24 border border-gray-300 snap-center">
             <img src={image} alt={`Cargada ${index}`} className="object-cover w-full h-full" />
           </div>
         ))}
-        <label className="w-24 h-24 flex items-center justify-center border-2 border-gray-300 border-dashed cursor-pointer mb-4">
+        <label className="flex-shrink-0 w-32 h-32 md:w-24 md:h-24 flex items-center justify-center border-2 border-gray-300 border-dashed cursor-pointer snap-center">
           <input
             type="file"
             onChange={handleImageChange}
