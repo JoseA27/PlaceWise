@@ -7,7 +7,7 @@ import SearchBar from "../molecules/SearchBar";
 import UserMenu from "../molecules/UserMenu";
 
 const Header = () => (
-  <header className="bg-[#dedcd6] shadow-md">
+  <header className="fixed top-0 w-full bg-[#dedcd6] shadow-md z-50">
     <div className="container mx-auto px-4 py-3">
       <div className="flex flex-col md:flex-row items-center justify-between">
         <div className="flex items-center mb-4 md:mb-0">

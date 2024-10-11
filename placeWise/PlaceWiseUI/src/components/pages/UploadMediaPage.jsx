@@ -2,10 +2,16 @@
 
 import React from 'react';
 import MainLayout from '../templates/MainLayout';
-
 import FileUploadTemplate from '../templates/FileUploadTemplate';
+import BottomNavBar from '../organisms/BottomNavBar';
 
 const UploadMediaPage = () => {
+  const handleOptionSelect = (option) => {
+    console.log(`Selected option: ${option}`);
+    // Aquí puedes definir la lógica para manejar cada tipo de archivo.
+  };
+
+
   return (
     <MainLayout>
       <div className="flex justify-center">
@@ -14,6 +20,7 @@ const UploadMediaPage = () => {
       <div className="m-10 h-screen">
         <FileUploadTemplate />
       </div>
+      <BottomNavBar />
     </MainLayout>
   );
 };

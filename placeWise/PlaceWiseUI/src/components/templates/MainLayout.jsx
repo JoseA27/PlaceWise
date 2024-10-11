@@ -4,11 +4,14 @@ import Header from '../organisms/Header';
 
 const MainLayout = ({ children }) => {
   return (
-    <div className='bg-white'>
+    <div className="bg-white">
       <Header />
-      <main>{children}</main>
+      <main className="pt-16"> 
+        {children}
+      </main>
     </div>
   );
 };
 
 export default MainLayout;
+

@@ -9,7 +9,7 @@ import VideoUpload from '../molecules/VideoUpload';
 import DocumentUpload from '../molecules/DocumentUpload';
 import TextAreaField from '../atoms/TextAreaField';
 import SocialIcons from '../molecules/SocialIcons';
-import InstagramCarousel from '../molecules/InstagramCarousel';
+import BottomNavBar from '../organisms/BottomNavBar';
 
 const FileUploadTemplate = () => {
   return (
@@ -50,10 +50,11 @@ const FileUploadTemplate = () => {
           <SocialIcons />
         </div>
       </div>
-      <div className="flex justify-end space-x-4 mt-4">
+      <div className="flex justify-end space-x-4 mt-4 mb-16">
         <CancelButton />
         <SaveButton />
       </div>
+      <BottomNavBar />
     </div>
   );
 };
