@@ -1,101 +1,37 @@
-{
-	"nombre": "",
-	"ubicacion": {
-		"direccion": "",
-		"geolocalizacion": {
-			"latitud": 0.0,
-			"longitud": 0.0
-		}
-	},
-	"telefono": "",
-	"correo": "",
-	"redesSociales": {
-		"facebook": "",
-		"instagram": "",
-		"twitter": "",
-		"TikTok": ""
-	},
-	"listaSolicitudes": [
-		{
-			"idSolicitud": "",
-			"fechaSolicitud": "YYYY-MM-DD"
-		}
-	],
-	"propiedadesAsignadas": [
-		{
-			"idPropiedad": "",
-			"fechaAsignacion": "YYYY-MM-DD",
-			"fechaVencimiento": "YYYY-MM-DD",
-			"estadoAsignacion": "",
-			"leads": [
+[
+	{
+		"nombre": "",
+		"id": 0,
+		"descripcion": "",
+		"telefono": "",
+		"correo": "",
+		"redesSociales": {
+			"facebook": "",
+			"instagram": "",
+			"twitter": "",
+			"TikTok": ""
+		},
+		"categoria": {
+			"rating": 0,
+			"tarifaActual": 0,
+			"historialTarifas": [
 				{
-					"idLead": "",
-					"fechaLead": "YYYY-MM-DD",
-					"nombreLead": "",
-					"telefonoLead": "",
-					"correoLead": "",
-					"estadoLead": "por ejemplo: en contacto, interesado, cerrado",
-					"comentariosLead": "Notas o comentarios adicionales sobre la interacción con el lead"
+					"fechaInicio": "YYYY-MM-DD",
+					"fechaFin": "YYYY-MM-DD",
+					"tarifa": 0
+				}
+			],
+			"paquetes": [
+				{
+					"idPaquete": 0,
+					"nombrePaquete": "",
+					"version": "",
+					"descripcion": "",
+					"precio": 0.0,
+					"checksumPrecio": "e99a18c428cb38d5f260853678922e03 (ejemplo)",
+					"url": ""
 				}
 			]
 		}
-	],
-	"historialVentas": [
-		{
-			"idPropiedad": "",
-			"fechaVenta": "YYYY-MM-DD",
-			"montoVenta": 0.0,
-			"comprador": {
-				"idComprador": "",
-				"nombre": ""
-			}
-		}
-	],
-	"multimediaPropiedad": [
-		{
-			"idPropiedad": "",
-			"imagenes": [
-				{
-					"nombre": "",
-					"descripcion": "",
-					"fechaSubida": "YYYY-MM-DD",
-					"usuarioSubida": ""
-				}
-			],
-			"videos": [
-				{
-					"nombre": "",
-					"descripcion": "",
-					"fechaSubida": "YYYY-MM-DD",
-					"usuarioSubida": ""
-				}
-			],
-			"modelos3D": [
-				{
-					"nombre": "",
-					"descripcion": "",
-					"fechaSubida": "YYYY-MM-DD",
-					"usuarioSubida": ""
-				}
-			]
-		}
-	],
-	"categoria": {
-		"rating": 0,
-		"tarifaActual": 0,
-		"historialTarifas": [
-			{
-				"fechaInicio": "YYYY-MM-DD",
-				"fechaFin": "YYYY-MM-DD",
-				"tarifa": 0
-			}
-		],
-		"paquetes": [
-			{
-				"nombrePaquete": "",
-				"descripcion": "",
-				"precio": 0.0
-			}
-		]
 	}
-}
+]

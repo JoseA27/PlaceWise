@@ -1,0 +1,10 @@
+[
+    {
+        "idSolicitud": "",
+        "idVendedor": "",
+        "idComprador": "",
+        "idPropiedad": "",
+        "fechaSolicitud": "YYYY-MM-DD",
+        "status": ""
+    }
+]

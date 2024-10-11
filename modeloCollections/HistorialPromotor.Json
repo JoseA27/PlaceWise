@@ -1,0 +1,16 @@
+[
+    {
+        "idPromotor": "",
+        "historial": [
+            {
+                "idPropiedad": "",
+                "fechaVenta": "YYYY-MM-DD",
+                "montoVenta": 0.0,
+                "comprador": {
+                    "idComprador": "",
+                    "nombre": ""
+                }
+            }
+        ]
+    }
+]

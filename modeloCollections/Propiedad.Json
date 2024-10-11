@@ -1,8 +1,11 @@
 {
     "id": 0,
-    "idPromotor": 0,
+    "idPromotorActual": 0,
     "titulo": "",
     "ubicacion": {
+        "idContry": 0,
+        "idState": 0,
+        "idCity": 0,
         "direccion": "",
         "geolocalizacion": {
             "latitud": 0.0,
@@ -14,7 +17,9 @@
     "bitacora": [
         {
             "fechaEvento": "YYYY-MM-DD",
-            "descripcionEvento": "",
+            "tipoEvento": "",
+            "status": "",
+            "descripcion": "",
             "usuarioResponsable": ""
         }
     ],
@@ -24,7 +29,9 @@
             "tipo": " aca lo dejamos como tipos genericos que pueden cambiar ya que no sabemos cuales",
             "fechaEmision": "YYYY-MM-DD",
             "fechaVencimiento": "YYYY-MM-DD",
-            "emitidoPor": ""
+            "emitidoPor": "",
+            "status": "",
+            "url": ""
         }
     ]
 }

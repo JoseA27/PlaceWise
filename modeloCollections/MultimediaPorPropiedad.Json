@@ -1,0 +1,33 @@
+[
+    {
+        "idPropiedad": "",
+        "idPromotor": "",
+        "imagenes": [
+            {
+                "nombre": "",
+                "descripcion": "",
+                "fechaSubida": "YYYY-MM-DD",
+                "usuarioSubida": "",
+                "url": ""
+            }
+        ],
+        "videos": [
+            {
+                "nombre": "",
+                "descripcion": "",
+                "fechaSubida": "YYYY-MM-DD",
+                "usuarioSubida": "",
+                "url": ""
+            }
+        ],
+        "modelos3D": [
+            {
+                "nombre": "",
+                "descripcion": "",
+                "fechaSubida": "YYYY-MM-DD",
+                "usuarioSubida": "",
+                "url": ""
+            }
+        ]
+    }
+]
