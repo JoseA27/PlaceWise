@@ -1,0 +1,22 @@
+[
+    {
+        "idPropiedad": "",
+        "idPromotor": "",
+        "idPaquete": 0,
+        "versionPaquete": "",
+        "fechaAsignacion": "YYYY-MM-DD",
+        "fechaVencimiento": "YYYY-MM-DD",
+        "estadoAsignacion": "",
+        "leads": [
+            {
+                "idLead": "",
+                "fechaLead": "YYYY-MM-DD",
+                "nombreLead": "",
+                "telefonoLead": "",
+                "correoLead": "",
+                "estadoLead": "por ejemplo: en contacto, interesado, cerrado",
+                "comentariosLead": "Notas o comentarios adicionales sobre la interacción con el lead"
+            }
+        ]
+    }
+]
