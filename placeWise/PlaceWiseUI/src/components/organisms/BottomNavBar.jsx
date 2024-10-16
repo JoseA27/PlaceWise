@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaHome, FaSearch, FaPlusCircle, FaRegHeart, FaUserCircle } from 'react-icons/fa';
 
-const BottomNavBar = () => {
+const BottomNavBar = ({ onOptionSelect }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -22,23 +22,23 @@ const BottomNavBar = () => {
       {isMenuOpen && (
         <div className="absolute bottom-12 w-full flex justify-center">
           <div className="bg-white rounded-lg shadow-lg flex flex-col items-center p-2 space-y-2">
-            <button className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
+            <button onClick={() => onOptionSelect('Fotos')} className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
               <FaHome className="text-blue-500" />
               <span>Fotos</span>
             </button>
-            <button className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
+            <button onClick={() => onOptionSelect('Videos')} className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
               <FaSearch className="text-green-500" />
               <span>Videos</span>
             </button>
-            <button className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
+            <button onClick={() => onOptionSelect('Documentos')} className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
               <FaRegHeart className="text-orange-500" />
               <span>Documentos</span>
             </button>
-            <button className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
+            <button onClick={() => onOptionSelect('Planos')} className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
               <FaUserCircle className="text-purple-500" />
               <span>Planos</span>
             </button>
-            <button className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
+            <button onClick={() => onOptionSelect('Experiencias')} className="bg-white p-2 rounded-full hover:bg-gray-100 flex items-center space-x-2">
               <FaUserCircle className="text-red-500" />
               <span>Experiencias</span>
             </button>
