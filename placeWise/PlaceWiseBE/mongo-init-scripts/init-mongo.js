@@ -1,5 +1,5 @@
 // Conectar a la base de datos
-db = db.getSiblingDB('PropiedadesDB');
+db = db.getSiblingDB('PlaceWiseDB');
 
 // Crear la colección "propiedades" si no existe
 db.createCollection('propiedades');
