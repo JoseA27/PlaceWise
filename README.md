@@ -275,43 +275,87 @@ Para garantizar que la documentación esté siempre alineada con el estado actua
 
 ### Descripción y Acciones:
 
+En la parte superior de la pantalla, se despliega un formulario para agregar los datos básicos de una propiedad, como nombre, dirección, tipo de propiedad, precio y una breve descripción.
+
 ### Acciones del Usuario:
 
-- **Completar Formulario**: Los campos que el usuario debe llenar incluyen Nombre de la Propiedad, Dirección, País, Estado/Provincia, Ciudad, Código Postal, Tipo de Propiedad, Precio y Descripción.
-Botón "Agregar Media": Una vez completado el formulario, el usuario puede hacer clic en el botón "Agregar Media" para proceder a la pantalla de carga de archivos.
-Mensajes de Error:
+- **Completar Formulario**: Los campos que el usuario debe llenar incluyen:
+  - Nombre de la Propiedad
+  - Dirección
+  - Tipo de Propiedad (seleccionado desde un menú desplegable, por ejemplo, Casa, Departamento, etc.)
+  - Precio
+  - Descripción de la propiedad
 
-- **Campos Requeridos**: Si el usuario intenta avanzar sin completar los campos requeridos (marcados como obligatorios), se mostrará un mensaje de error bajo el campo faltante.
-Formato Incorrecto: Si el usuario ingresa datos en un formato incorrecto (por ejemplo, letras en el campo de Precio), el sistema indicará el error específico bajo el campo afectado.
+- **Botones de Acción**:
+  - **Cancelar**: Si el usuario hace clic en el botón rojo "Cancelar", se descartarán los cambios y el usuario será redirigido o la acción será cancelada.
+  - **Agregar Media**: Después de completar el formulario, el usuario puede hacer clic en el botón azul "Agregar Media" para proceder a la pantalla de carga de archivos multimedia.
+  - **Guardar Cambios**: El botón verde "Guardar cambios" guardará la información ingresada si está completa y en el formato correcto. Si todo está correcto, se mostrará un mensaje de éxito.
+
+### Mensajes de Error:
+
+- **Campos Requeridos**: Si el usuario intenta guardar o avanzar sin completar alguno de los campos requeridos, aparecerá un mensaje de error debajo del campo faltante.
+  
+- **Formato Incorrecto**: Si el usuario ingresa datos con formato incorrecto (por ejemplo, letras en el campo de Precio), el sistema resaltará el campo afectado y mostrará un mensaje de error específico debajo.
 
 ### Mensajes de Confirmación:
 
-- **Datos Guardados Correctamente**: Una vez que se validan y guardan los datos, aparece un mensaje de confirmación indicando que la información se guardó con éxito y el usuario será redirigido a la pantalla "Agregar Media".
+- **Datos Guardados Correctamente**: Si los datos son ingresados correctamente, aparecerá un mensaje de confirmación indicando que la información fue guardada con éxito. El usuario será redirigido a la pantalla "Agregar Media" para continuar con la carga de archivos.
 
 ### Agregar Contenido multimedia
-![alt text](imagenes/PantallaAgregarMedia.png)
+![alt text](imagenes/PantallaAgregarMedia1.png)
+![alt text](imagenes/PantallaAgregarMedia2.png)
 
 ### Descripción y Acciones:
 
+La pantalla "Agregar Media" permite al usuario subir diversos tipos de archivos relacionados con la propiedad, como fotos, videos, documentos, planos, experiencias y una vista 3D.
+
 ### Acciones del Usuario:
 
-- **Subir Archivos (Imagenes, Videos, Documentos, Planos y Vista 3D)**: Cada sección tiene un botón "+" para permitir al usuario agregar archivos específicos. Para cada archivo subido, se muestra una vista previa.
-Los usuarios pueden cargar imágenes de la propiedad, videos, documentos, planos, y archivos STL para la vista 3D de la propiedad.
-### Botones de Acción (Guardar, Cancelar):
-- **Guardar Cambios**: Guarda todas las modificaciones y sube los archivos, mostrando un mensaje de confirmación al completar el proceso.
-- **Cancelar**: Cancela la acción y redirige al usuario de regreso a la pantalla anterior sin guardar.
+- **Selección de Tipo de Archivo**: En la parte inferior de la pantalla, el usuario puede hacer clic en el botón "Agregar" que despliega un menú con las siguientes opciones:
+  - **Fotos**: Permite cargar imágenes de la propiedad.
+  - **Videos**: Permite cargar videos de la propiedad.
+  - **Documentos**: Permite cargar archivos relacionados como contratos, facturas, etc.
+  - **Planos**: Permite cargar planos arquitectónicos de la propiedad.
+  - **Experiencias**: Permite cargar videos o imágenes relacionadas con experiencias del sitio o recorridos por la zona.
 
-### Mensajes de Error:
-- **Formato de Archivo Incorrecto**: Si el usuario intenta cargar un archivo en un formato no compatible, el sistema mostrará un mensaje indicando los formatos permitidos para cada tipo de archivo.
-- **Tamaño Excesivo**: Si el archivo excede el tamaño máximo permitido, el sistema indicará el error y no permitirá la carga.
+### Acciones de Carga:
+
+- **Carrusel de Imágenes**: Las imágenes cargadas se muestran en un carrusel. El usuario puede deslizar o usar las flechas laterales para navegar entre las imágenes. Si no se ha cargado ninguna imagen, se mostrará un mensaje que indica "No hay imágenes".
+  
+- **Videos de la Propiedad**: Los videos cargados se muestran en una sección con controles de reproducción. Si no se ha cargado ningún video, se mostrará un mensaje que indica "No hay videos".
+
+- **Documentos de la Propiedad**: Los documentos cargados se muestran con su nombre de archivo. Si no se ha cargado ningún documento, se mostrará un ícono por defecto con el mensaje "No hay documentos".
+
+- **Planos de la Propiedad**: Los planos cargados se muestran de la misma forma que los documentos. Si no se ha cargado ningún plano, se mostrará un ícono por defecto.
+
+- **Vista 3D de la Propiedad**: El usuario puede cargar un archivo STL (formato de modelado 3D) relacionado con la propiedad. El área de carga permite arrastrar y soltar el archivo o hacer clic para seleccionar el archivo desde el explorador de archivos. Si no se ha cargado ningún archivo 3D, se mostrará un mensaje por defecto indicando "Click to upload or drag and drop STL (MAX. 100MB)". El sistema acepta archivos de hasta 100MB en formato STL.
+
+### Mensajes de Error
+
+- **Campos Requeridos**: 
+  Si el usuario intenta avanzar sin agregar archivos a alguna de las secciones (fotos, videos, documentos, planos, experiencias o vista 3D) que sean obligatorias, aparecerá un mensaje de error bajo la sección correspondiente indicando que se requiere al menos un archivo.
+
+- **Tamaño de Archivo Excedido**: 
+  Si el usuario intenta cargar un archivo que excede el tamaño máximo permitido (por ejemplo, 100MB para los archivos 3D o 500MB para videos), se mostrará un mensaje de error indicando: "El archivo supera el tamaño máximo permitido. Por favor, sube un archivo de menor tamaño."
+
+- **Formato Incorrecto**: 
+  Si el usuario intenta cargar un archivo en un formato no soportado (por ejemplo, un archivo no STL en la sección de vista 3D), aparecerá un mensaje de error indicando: "Formato de archivo no permitido. Por favor, sube un archivo en un formato válido."
+
+- **Falló la Carga del Archivo**: 
+  Si ocurre un error durante la carga del archivo (por ejemplo, debido a una falla en la red), aparecerá un mensaje de error indicando: "Hubo un error al cargar el archivo. Por favor, intenta nuevamente."
+
 
 ### Mensajes de Confirmación:
-- **Archivos Subidos Correctamente**: Al finalizar la carga de archivos, un mensaje de éxito confirma que los archivos se subieron exitosamente.
-- **Acción Cancelada**: Al hacer clic en cancelar, se muestra un mensaje indicando que la acción ha sido cancelada y se redirige al usuario a la pantalla de inicio o a la pantalla anterior.
 
-## Diagrama de capas
+- **Archivos Cargados Correctamente**: Una vez que el usuario carga un archivo, se mostrará la vista previa en la sección correspondiente (fotos, videos, documentos, etc.).
 
-## Diagrama de clases
+### Botones:
+
+- **Cancelar**: Permite al usuario cancelar la carga de archivos.
+- **Guardar Cambios**: Guarda los archivos cargados y muestra un mensaje de confirmación al usuario.
+
+
+## Diagrama de capas y clases
 
 ![alt text](imagenes/Diagrama%20de%20Clases%20FE.jpg)
 

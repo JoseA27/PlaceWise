@@ -1,45 +1,70 @@
 // src/components/molecules/VideoUpload.jsx
 
 import React, { useState } from 'react';
-import { FaPlay } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaVideo } from 'react-icons/fa';
+import { useSwipeable } from 'react-swipeable';
 
-const VideoUpload = () => {
-  const [videos, setVideos] = useState([]);
+const VideoUpload = ({ videos = [] }) => { 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [animationClass, setAnimationClass] = useState('');
 
-  // Maneja la carga de un nuevo video
-  const handleVideoChange = (event) => {
-    const files = Array.from(event.target.files);
-    const newVideos = files.map((file) => URL.createObjectURL(file));
-    setVideos((prevVideos) => [...prevVideos, ...newVideos]);
+  const prevVideo = () => {
+    setAnimationClass('animate-slideOutLeft');
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex === 0 ? videos.length - 1 : prevIndex - 1));
+      setAnimationClass('animate-slideInLeft');
+    }, 250); // Ajusta el tiempo para sincronizar con la animación
   };
 
+  const nextVideo = () => {
+    setAnimationClass('animate-slideOutRight');
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex === videos.length - 1 ? 0 : prevIndex + 1));
+      setAnimationClass('animate-slideInRight');
+    }, 250);
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: nextVideo,
+    onSwipedRight: prevVideo,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
   return (
-    <div className="flex flex-col space-y-4 mt-4">
-      <div className="flex flex-wrap space-x-4">
-        {videos.map((video, index) => (
-          <div key={index} className="relative w-24 h-24 border border-gray-300 mb-4">
-            <video
-              src={video}
-              className="object-cover w-full h-full opacity-50"
-              muted
-              loop
-              autoPlay
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <FaPlay className="text-gray-700 text-3xl" />
-            </div>
-          </div>
-        ))}
-        <label className="w-24 h-24 flex items-center justify-center border-2 border-gray-300 border-dashed cursor-pointer mb-4">
-          <input
-            type="file"
-            onChange={handleVideoChange}
-            className="hidden"
-            accept="video/*"
+    <div className="flex flex-col items-center space-y-4 mt-4">
+      {videos.length === 0 ? (
+        <div className="w-full h-64 border border-gray-300 flex flex-col items-center justify-center bg-gray-100">
+          <FaVideo className="text-gray-400 text-6xl" />
+          <p className="mt-2 text-gray-500">No hay videos</p>
+        </div>
+      ) : (
+        <div 
+          className="relative w-full h-64 flex justify-center items-center overflow-hidden" 
+          {...swipeHandlers}
+        >
+          <button onClick={prevVideo} className="absolute left-0 p-2 text-gray-600 hover:text-black">
+            <FaChevronLeft />
+          </button>
+          <video 
+            src={videos[currentIndex]} 
+            className={`object-contain w-auto h-full ${animationClass}`} 
+            controls 
+            loop 
           />
-          <span className="text-xl text-gray-500">+</span>
-        </label>
-      </div>
+          <button onClick={nextVideo} className="absolute right-0 p-2 text-gray-600 hover:text-black">
+            <FaChevronRight />
+          </button>
+          <div className="absolute bottom-2 flex space-x-1">
+            {videos.map((_, index) => (
+              <div
+                key={index}
+                className={`w-1 h-1 rounded-full ${currentIndex === index ? 'bg-gray-100' : 'bg-gray-400'}`}
+              ></div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
