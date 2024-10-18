@@ -14,7 +14,7 @@ class Ubicacion(models.Model):
     idState = models.IntegerField()
     idCity = models.IntegerField()
     direccion = models.CharField(max_length=255)
-    geolocalizacion = models.EmbeddedModelField(model_container=Geolocalizacion)
+    geolocalizacion = models.EmbeddedField(model_container=Geolocalizacion)
 
     class Meta:
         abstract = True
@@ -23,7 +23,7 @@ class Ubicacion(models.Model):
 class Bitacora(models.Model):
     fechaEvento = models.DateField()
     tipoEvento = models.CharField(max_length=255)
-    status = models.CharField(max_length=255)
+    status = models.CharField(max_length=50)
     descripcion = models.TextField()
     usuarioResponsable = models.CharField(max_length=255)
 
@@ -37,7 +37,7 @@ class Documento(models.Model):
     fechaEmision = models.DateField()
     fechaVencimiento = models.DateField()
     emitidoPor = models.CharField(max_length=255)
-    status = models.CharField(max_length=255)
+    status = models.CharField(max_length=50)
     url = models.URLField()
 
     class Meta:
@@ -45,12 +45,11 @@ class Documento(models.Model):
 
 
 class Propiedad(models.Model):
+    id = models.IntegerField()
+    idPromotorActual = models.IntegerField()
     titulo = models.CharField(max_length=255)
-    ubicacion = models.EmbeddedModelField(model_container=Ubicacion)
+    ubicacion = models.EmbeddedField(model_container=Ubicacion)
     descripcion = models.TextField()
     estatus = models.CharField(max_length=50)
     bitacora = models.ArrayField(model_container=Bitacora)
     documentos = models.ArrayField(model_container=Documento)
-
-    def __str__(self):
-        return self.titulo

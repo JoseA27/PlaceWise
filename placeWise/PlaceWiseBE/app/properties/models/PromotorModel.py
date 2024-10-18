@@ -1,22 +1,22 @@
 from djongo import models
 
 
-class HistorialTarifa(models.Model):
+class HistorialTarifas(models.Model):
     fechaInicio = models.DateField()
     fechaFin = models.DateField()
-    tarifa = models.DecimalField(max_digits=10, decimal_places=2)
+    tarifa = models.FloatField()
 
     class Meta:
         abstract = True
 
 
-class Paquete(models.Model):
+class Paquetes(models.Model):
     idPaquete = models.IntegerField()
     nombrePaquete = models.CharField(max_length=255)
-    version = models.CharField(max_length=50)
+    version = models.CharField(max_length=255)
     descripcion = models.TextField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
-    checksumPrecio = models.CharField(max_length=32)
+    precio = models.FloatField()
+    checksumPrecio = models.CharField(max_length=255)
     url = models.URLField()
 
     class Meta:
@@ -24,10 +24,10 @@ class Paquete(models.Model):
 
 
 class Categoria(models.Model):
-    rating = models.IntegerField()
-    tarifaActual = models.DecimalField(max_digits=10, decimal_places=2)
-    historialTarifas = models.ArrayField(model_container=HistorialTarifa)
-    paquetes = models.ArrayField(model_container=Paquete)
+    rating = models.FloatField()
+    tarifaActual = models.FloatField()
+    historialTarifas = models.ArrayField(model_container=HistorialTarifas)
+    paquetes = models.ArrayField(model_container=Paquetes)
 
     class Meta:
         abstract = True
@@ -35,13 +35,9 @@ class Categoria(models.Model):
 
 class Promotor(models.Model):
     nombre = models.CharField(max_length=255)
+    id = models.IntegerField()
     descripcion = models.TextField()
     telefono = models.CharField(max_length=20)
     correo = models.EmailField()
-    redesSociales = (
-        models.JSONField()
-    )  # {facebook: '', instagram: '', twitter: '', TikTok: ''}
-    categoria = models.EmbeddedModelField(model_container=Categoria)
-
-    def __str__(self):
-        return self.nombre
+    redesSociales = models.JSONField()
+    categoria = models.EmbeddedField(model_container=Categoria)
