@@ -16,3 +16,8 @@ class TwitterAdapter(SocialMediaAdapter):
         }
         tweet_response = requests.post(tweet_url, data=tweet_data, auth=settings.TWITTER_ACCESS_TOKEN)
         return tweet_response.json()
+    def get_posts(self, user_id):
+        url = f'https://api.twitter.com/2/users/{user_id}/tweets'
+        headers = {'Authorization': f'Bearer {settings.TWITTER_BEARER_TOKEN}'}
+        response = requests.get(url, headers=headers)
+        return response.json()

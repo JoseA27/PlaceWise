@@ -12,3 +12,8 @@ class FacebookAdapter(SocialMediaAdapter):
         }
         response = requests.post(url, files=files, data=data)
         return response.json()
+    def get_posts(self, user_id):
+        url = f'https://graph.facebook.com/v11.0/{user_id}/posts'
+        params = {'access_token': settings.FACEBOOK_ACCESS_TOKEN}
+        response = requests.get(url, params=params)
+        return response.json()

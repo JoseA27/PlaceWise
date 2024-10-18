@@ -23,3 +23,9 @@ class InstagramAdapter(SocialMediaAdapter):
         })
 
         return publish_response.json()
+    
+    def get_posts(self, user_id):
+        url = f'https://graph.facebook.com/v11.0/{user_id}/media'
+        params = {'access_token': settings.INSTAGRAM_ACCESS_TOKEN}
+        response = requests.get(url, params=params)
+        return response.json()

@@ -9,4 +9,12 @@ class SocialMediaService:
         if not adapter:
             raise ValueError(f"Unsupported social media platform: {platform}")
 
-        return adapter.post(media_path, content)  
+        # Determinar el tipo de contenido y llamar al método adecuado
+        return adapter.post(media_path, content)
+
+    def get_user_posts(self, platform, user_id):
+        adapter = self.factory.get_adapter(platform.lower())
+        if not adapter:
+            raise ValueError(f"Unsupported social media platform: {platform}")
+
+        return adapter.get_posts(user_id) 

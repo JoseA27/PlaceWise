@@ -3,7 +3,8 @@
 Estructura básica: https://github.com/vintasoftware/django-react-boilerplate/tree/main/backend
 s3: https://github.com/etianen/django-s3-storage/tree/master
 
-
+## Diagrama 
+![alt text](<../../imagenes/Diagrama BE.png>)
 
 ## Estructura de Carpetas
 
