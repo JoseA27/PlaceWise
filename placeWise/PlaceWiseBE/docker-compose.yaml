@@ -62,6 +62,17 @@ services:
     depends_on:
       - mongo
 
+  placewise-ui:
+    build:
+      context: ../PlaceWiseUI  # Apunta al directorio del frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80  # Exponer el puerto 3000 para acceder al frontend
+    networks:
+      - web
+    depends_on:
+      - app
+
 networks:
   web:
     driver: bridge
