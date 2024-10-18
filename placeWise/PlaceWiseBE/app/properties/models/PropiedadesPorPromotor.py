@@ -7,7 +7,7 @@ class Lead(models.Model):
     nombreLead = models.CharField(max_length=255)
     telefonoLead = models.CharField(max_length=20)
     correoLead = models.EmailField()
-    estadoLead = models.CharField(max_length=255)
+    estadoLead = models.CharField(max_length=50)
     comentariosLead = models.TextField()
 
     class Meta:
@@ -18,11 +18,8 @@ class PropiedadesPorPromotor(models.Model):
     idPropiedad = models.CharField(max_length=255)
     idPromotor = models.CharField(max_length=255)
     idPaquete = models.IntegerField()
-    versionPaquete = models.CharField(max_length=255)
+    versionPaquete = models.CharField(max_length=50)
     fechaAsignacion = models.DateField()
     fechaVencimiento = models.DateField()
-    estadoAsignacion = models.CharField(max_length=255)
+    estadoAsignacion = models.CharField(max_length=50)
     leads = models.ArrayField(model_container=Lead)
-
-    def __str__(self):
-        return f"Propiedad {self.idPropiedad} asignada al promotor {self.idPromotor}"
