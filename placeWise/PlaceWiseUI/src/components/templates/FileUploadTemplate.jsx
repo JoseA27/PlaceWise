@@ -7,6 +7,7 @@ import ImageUpload from '../molecules/ImageUpload';
 import VideoUpload from '../molecules/VideoUpload';
 import DocumentUpload from '../molecules/DocumentUpload';
 import TextAreaField from '../atoms/TextAreaField';
+import Dropzone from '../atoms/Dropzone';
 import SocialIcons from '../molecules/SocialIcons';
 
 const FileUploadTemplate = ({
@@ -43,6 +44,10 @@ const FileUploadTemplate = ({
         <div>
           <h2 className="mb-2 text-lg font-semibold">Video Experiencias del sitio/Recorridos por la zona (Opcional)</h2>
           <VideoUpload videos={experienceVideos} />
+        </div>
+        <div className="md:col-span-2">
+          <h2 className="mb-2 text-lg font-semibold">Vista 3D de la propiedad</h2>
+          <Dropzone />
         </div>
         <div className="md:col-span-2">
           <p className="block font-medium text-gray-900 text-center">
