@@ -115,11 +115,41 @@ Almacena todos los componentes React, organizados en subcarpetas:
     - **UploadMediaPage.jsx**: Página para agregar media a la propiedad.
     - **UploadPropertyPage.jsx**: Página principal para la creación de propiedades.
 
+#### **services/**: 
+Módulos que gestionan la interacción con APIs externas y el backend.
+
+- **apiService.js**: Servicio general para las llamadas a la API.
+- **propertyService.js**: Servicio que gestiona la lógica relacionada con las propiedades.
+- **mediaService.js**: Servicio que gestiona la subida de archivos multimedia (imágenes, videos, documentos).
+
+#### **auth/**:
+Módulos relacionados con la autenticación de usuarios.
+
+- **AuthContext.jsx**: Proveedor de contexto de autenticación.
+- **useAuth.js**: Hook personalizado para manejar la autenticación de usuarios.
+- **PrivateRoute.jsx**: Componente para proteger rutas que requieren autenticación.
+
+#### **hooks/**:
+Contiene hooks personalizados para simplificar la lógica reutilizable.
+
+- **useForm.js**: Hook personalizado para manejar la lógica de formularios.
+- **useMediaUpload.js**: Hook para gestionar la subida de archivos multimedia.
+
+#### **context/**:
+Proveedores de contexto que permiten el manejo del estado global de la aplicación.
+
+- **GlobalContext.jsx**: Proveedor del contexto global para compartir el estado entre múltiples componentes.
+
 #### **styles/**: 
 Incluye configuraciones y estilos globales, en este caso con Tailwind CSS.
 
+- **tailwind.css**: Estilos base configurados con Tailwind CSS.
+
 #### **utils/**: 
 Funciones auxiliares y de utilidad.
+
+- **helpers.js**: Funciones auxiliares como formateadores de fechas y otros utilitarios.
+- **validators.js**: Funciones para validar entradas de usuario en formularios.
 
 #### **.gitignore**: 
 Archivo de configuración para ignorar carpetas innecesarias en Git, como node_modules.
