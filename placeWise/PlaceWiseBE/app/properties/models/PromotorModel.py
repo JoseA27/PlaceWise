@@ -41,7 +41,7 @@ class Promotor(models.Model):
     redesSociales = (
         models.JSONField()
     )  # {facebook: '', instagram: '', twitter: '', TikTok: ''}
-    categoria = models.EmbeddedModelField(model_container=Categoria)
+    categoria = models.EmbeddedField(model_container=Categoria)
 
     def __str__(self):
         return self.nombre

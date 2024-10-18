@@ -1,15 +1,8 @@
 from rest_framework import serializers
-from app.models import Propiedades
+from .models.PropiedadModel import Propiedad  # Importa el modelo de propiedades
 
-class PropiedadesSerializer(serializers.ModelSerializer):
+
+class PropiedadSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Propiedades
-        fields = (
-            'ID_de_Propiedad',
-            'Ciudad',
-            'Provincia',
-            'Tipo_de_Propiedad',
-            'Precio_CRC',
-            'Descripción'
-        )
-
+        model = Propiedad
+        fields = "__all__"  # Incluye todos los campos del modelo
