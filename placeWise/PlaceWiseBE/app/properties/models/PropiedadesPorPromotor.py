@@ -23,3 +23,6 @@ class PropiedadesPorPromotor(models.Model):
     fechaVencimiento = models.DateField()
     estadoAsignacion = models.CharField(max_length=50)
     leads = models.ArrayField(model_container=Lead)
+
+    class Meta:
+        db_table = 'propiedadesPorPromotor'

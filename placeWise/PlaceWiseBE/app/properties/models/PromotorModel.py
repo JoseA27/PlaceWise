@@ -41,3 +41,6 @@ class Promotor(models.Model):
     correo = models.EmailField()
     redesSociales = models.JSONField()
     categoria = models.EmbeddedField(model_container=Categoria)
+
+    class Meta:
+        db_table = 'propiedades'

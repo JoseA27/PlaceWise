@@ -10,7 +10,7 @@ class PropertyService:
         return solicitudes_serializer.data
     @staticmethod
     def obtener_todas_propiedades():
-        propiedades = PropertyRepository.obtener_todas()
+        propiedades = PropertyRepository.get_all_Propiedades()
         serializer = PropiedadSerializer(propiedades, many=True)
         return serializer.data
     @staticmethod

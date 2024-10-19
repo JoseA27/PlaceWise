@@ -40,3 +40,6 @@ class MultimediaPorPropiedad(models.Model):
     imagenes = models.ArrayField(model_container=Imagen)
     videos = models.ArrayField(model_container=Video)
     modelos3D = models.ArrayField(model_container=Modelo3D)
+
+    class Meta:
+        db_table = 'historialPromotor'

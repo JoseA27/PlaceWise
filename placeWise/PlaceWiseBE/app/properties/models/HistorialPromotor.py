@@ -22,3 +22,6 @@ class HistorialVenta(models.Model):
 class HistorialPromotor(models.Model):
     idPromotor = models.CharField(max_length=255)
     historial = models.ArrayField(model_container=HistorialVenta)
+
+    class Meta:
+        db_table = 'historialPromotor'

@@ -25,6 +25,8 @@ class PropertyRepository:
             print(f"Error al guardar la solicitud: {str(e)}")
             return None
     @staticmethod
-    def obtener_todas():
+    def get_all_Propiedades():
         return Propiedad.objects.all()
+
+    
     
