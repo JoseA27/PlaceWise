@@ -270,6 +270,10 @@ Para garantizar que la documentación esté siempre alineada con el estado actua
 
 ## UI
 
+### Matriz de Requerimientos Funcionales vs Componentes Visuales
+
+![alt text](imagenes/Matriz%20de%20Requerimientos%20vs%20Componentes.png)
+
 ### Subir Propiedad
 ![alt text](imagenes/PantallaSubirPropiedad.png)
 
