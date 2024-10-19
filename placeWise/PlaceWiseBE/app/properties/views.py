@@ -1,4 +1,15 @@
 from rest_framework import generics
+
+
+from django.core.cache import cache
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
+from django.db import connection
+import hashlib
+
 from .models.PromotorModel import Promotor
 from .models.PropiedadModel import Propiedad
 from .models.PropiedadesPorPromotor import PropiedadesPorPromotor
@@ -11,17 +22,24 @@ from .serializers import (
     PropiedadesPorPromotorSerializer,
     HistorialPromotorSerializer,
     MultimediaPorPropiedadSerializer,
-    SolicitudesPromotorSerializer,
+    SolicitudSerializer,
 )
 
 
-class PromotorListView(generics.ListAPIView):
-    queryset = Promotor.objects.all()
-    serializer_class = PromotorSerializer
+@csrf_exempt
+def solicitudes(request, id=0):
+    if request.method == "GET":
+        solicitudes = Solicitud.objects.all()
+        solicitudes_serializer = SolicitudSerializer(solicitudes, many=True)
+        return JsonResponse(solicitudes_serializer.data, safe=False)
 
-    def get(self, request, *args, **kwargs):
-        print(self.queryset)  # Depuración
-        return super().get(request, *args, **kwargs)
+
+@csrf_exempt
+def promotores(request):
+    if request.method == "GET":
+        promotores = Promotor.objects.all()
+        promotores_serializer = PromotorSerializer(promotores, many=True)
+        return JsonResponse(promotores_serializer.data, safe=False)
 
 
 class PropiedadListView(generics.ListAPIView):
@@ -42,8 +60,3 @@ class HistorialPromotorListView(generics.ListAPIView):
 class MultimediaPorPropiedadListView(generics.ListAPIView):
     queryset = MultimediaPorPropiedad.objects.all()
     serializer_class = MultimediaPorPropiedadSerializer
-
-
-class SolicitudesPromotorListView(generics.ListAPIView):
-    queryset = Solicitud.objects.all()
-    serializer_class = SolicitudesPromotorSerializer

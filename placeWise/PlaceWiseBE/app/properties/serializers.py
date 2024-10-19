@@ -1,23 +1,55 @@
 from rest_framework import serializers
-from .models.PromotorModel import Promotor
+
+# from .models.PromotorModel import Promotor
 from .models.PropiedadModel import Propiedad
 from .models.PropiedadesPorPromotor import PropiedadesPorPromotor
 from .models.SolicitudesPromotor import Solicitud
 from .models.MultimediaPorPropiedad import MultimediaPorPropiedad
 from .models.HistorialPromotor import HistorialPromotor
 
+from .models.PromotorModel import (
+    Promotor,
+    Categoria,
+    HistorialTarifas,
+    RedesSociales,
+    Paquete,
+)
+
+
+class RedesSocialesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RedesSociales
+        fields = "__all__"
+
+
+class HistorialTarifasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HistorialTarifas
+        fields = "__all__"
+
+
+class PaqueteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Paquete
+        fields = "__all__"
+
+
+class CategoriaSerializer(serializers.ModelSerializer):
+    historialTarifas = HistorialTarifasSerializer(many=True)
+    paquetes = PaqueteSerializer(many=True)
+
+    class Meta:
+        model = Categoria
+        fields = "__all__"
+
 
 class PromotorSerializer(serializers.ModelSerializer):
+    redesSociales = RedesSocialesSerializer()
+    categoria = CategoriaSerializer()
+
     class Meta:
         model = Promotor
-        fields = (
-            "nombre",
-            "categoria",
-            "tarifa",
-            "asignaciones",  # lista de propiedades asignadas al promotor
-            "redesSociales",  # lista de redes sociales
-            "fecha_de_registro",
-        )
+        fields = "__all__"
 
 
 class PropiedadSerializer(serializers.ModelSerializer):
@@ -67,12 +99,14 @@ class MultimediaPorPropiedadSerializer(serializers.ModelSerializer):
         )
 
 
-class SolicitudesPromotorSerializer(serializers.ModelSerializer):
+class SolicitudSerializer(serializers.ModelSerializer):
     class Meta:
         model = Solicitud
         fields = (
-            "promotor",
-            "solicitud",  # descripción de la solicitud
-            "estado",  # estado de la solicitud (pendiente, aceptada, etc.)
-            "fecha_de_solicitud",
+            "idSolicitud",  # Usando el nombre original
+            "idVendedor",
+            "idComprador",
+            "idPropiedad",
+            "fechaSolicitud",
+            "status",
         )
