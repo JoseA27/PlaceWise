@@ -1,3 +1,5 @@
 from django.urls import path, include
 
-urlpatterns = [path("app/", include("app.properties.urls"))]
+urlpatterns = [
+    path('app/', include('app.properties.urls')),
+]

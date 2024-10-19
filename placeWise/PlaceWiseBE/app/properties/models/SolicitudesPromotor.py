@@ -1,15 +1,14 @@
 from django.db import models
 
 
-class Solicitud(models.Model):
-    idSolicitud = models.CharField(
-        max_length=100, primary_key=True
-    )  # Usando el nombre original
-    idVendedor = models.CharField(max_length=100)
-    idComprador = models.CharField(max_length=100)
-    idPropiedad = models.IntegerField()  # Manteniendo el tipo de dato correcto
+
+class SolicitudPromotor(models.Model):
+    idSolicitud = models.CharField(max_length=255)
+    idVendedor = models.CharField(max_length=255)
+    idComprador = models.CharField(max_length=255)
+    idPropiedad = models.CharField(max_length=255)
     fechaSolicitud = models.DateField()
-    status = models.CharField(max_length=100)
+    status = models.CharField(max_length=50)
 
     class Meta:
-        db_table = "solicitudesPromotor"
+        db_table = 'solicitudesPromotor'

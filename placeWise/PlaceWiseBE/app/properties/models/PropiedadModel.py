@@ -53,3 +53,6 @@ class Propiedad(models.Model):
     estatus = models.CharField(max_length=50)
     bitacora = models.ArrayField(model_container=Bitacora)
     documentos = models.ArrayField(model_container=Documento)
+
+    class Meta:
+        db_table = 'propiedades'
