@@ -2,11 +2,11 @@ from rest_framework import serializers
 from .models.PromotorModel import Promotor
 from .models.PropiedadModel import Propiedad
 from .models.PropiedadesPorPromotor import PropiedadesPorPromotor
-from .models.SolicitudesPromotor import Solicitud
+from .models.SolicitudesPromotor import SolicitudPromotor
 from .models.MultimediaPorPropiedad import MultimediaPorPropiedad
 from .models.HistorialPromotor import HistorialPromotor
 
-
+"""
 class PromotorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Promotor
@@ -75,4 +75,16 @@ class SolicitudesPromotorSerializer(serializers.ModelSerializer):
             "solicitud",  # descripción de la solicitud
             "estado",  # estado de la solicitud (pendiente, aceptada, etc.)
             "fecha_de_solicitud",
+       ) """
+
+class SolicitudSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SolicitudPromotor
+        fields = (
+            "idSolicitud",  # Usando el nombre original
+            "idVendedor",
+            "idComprador",
+            "idPropiedad",
+            "fechaSolicitud",
+            "status",
         )
