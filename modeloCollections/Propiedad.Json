@@ -13,7 +13,7 @@
         }
     },
     "descripcion": "",
-    "estatus": "",
+    "status": "",
     "bitacora": [
         {
             "fechaEvento": "YYYY-MM-DD",
