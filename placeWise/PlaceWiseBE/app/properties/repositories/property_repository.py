@@ -75,10 +75,13 @@ class PropertyRepository:
             return None
 
     # Propiedades por Promotor
+    # Método que obtiene todas las propiedades por promotor
     @staticmethod
     def get_all_propiedades_por_promotor():
         return PropiedadPorPromotor.objects.all()
 
+    # Método que crea una propiedad por promotor
+    # recibe los datos validados de la propiedad por promotor
     @staticmethod
     def crear_propiedad_por_promotor(validated_data):
         try:
@@ -90,10 +93,13 @@ class PropertyRepository:
             return None
 
     # Multimedia por Propiedad
+    # Método que obtiene todas las multimedia
     @staticmethod
     def get_all_multimedia():
         return MultimediaPorPropiedad.objects.all()
 
+    # Método que crea una multimedia
+    # recibe los datos validados de la multimedia
     @staticmethod
     def crear_multimedia(validated_data):
         try:
@@ -104,10 +110,13 @@ class PropertyRepository:
             return None
 
     # Historial Promotor
+    # Método que obtiene todo el historial de promotor
     @staticmethod
     def get_all_historial_promotor():
         return HistorialPromotor.objects.all()
 
+    # Método que crea un historial de promotor
+    # recibe los datos validados del historial de promotor
     @staticmethod
     def crear_historial_promotor(validated_data):
         try:
