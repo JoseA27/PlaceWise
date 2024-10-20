@@ -6,14 +6,14 @@ from ..services.property_service import PropertyService
 
 # Promotores
 @csrf_exempt
-def promotores(request):
+async def promotores(request):
     if request.method == "GET":
-        promotores = PropertyService.get_all_promotores()
+        promotores = await PropertyService.get_all_promotores()
         return JsonResponse(promotores, safe=False)
 
     elif request.method == "POST":
         data = JSONParser().parse(request)
-        promotor = PropertyService.agregar_promotor(data)
+        promotor = await PropertyService.agregar_promotor(data)
         if promotor:
             return JsonResponse(
                 {"message": "Promotor agregado exitosamente"},

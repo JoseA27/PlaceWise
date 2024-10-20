@@ -6,14 +6,14 @@ from ..services.property_service import PropertyService
 
 # Multimedia por Propiedad
 @csrf_exempt
-def multimedia_por_propiedad(request):
+async def multimedia_por_propiedad(request):
     if request.method == "GET":
-        multimedia = PropertyService.get_all_multimedia()
+        multimedia = await PropertyService.get_all_multimedia()
         return JsonResponse(multimedia, safe=False)
 
     elif request.method == "POST":
         data = JSONParser().parse(request)
-        multimedia = PropertyService.agregar_multimedia(data)
+        multimedia = await PropertyService.agregar_multimedia(data)
         if multimedia:
             return JsonResponse(
                 {"message": "Multimedia agregada exitosamente"},

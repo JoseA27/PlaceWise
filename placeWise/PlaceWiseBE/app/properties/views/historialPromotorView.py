@@ -6,14 +6,14 @@ from ..services.property_service import PropertyService
 
 # Historial Promotor
 @csrf_exempt
-def historial_promotor(request):
+async def historial_promotor(request):
     if request.method == "GET":
-        historial = PropertyService.get_all_historial_promotor()
+        historial = await PropertyService.get_all_historial_promotor()
         return JsonResponse(historial, safe=False)
 
     elif request.method == "POST":
         data = JSONParser().parse(request)
-        historial = PropertyService.agregar_historial_promotor(data)
+        historial = await PropertyService.agregar_historial_promotor(data)
         if historial:
             return JsonResponse(
                 {"message": "Historial agregado exitosamente"},
