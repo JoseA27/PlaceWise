@@ -1,6 +1,7 @@
 from django.conf import settings
 import requests
 
+# Servicio de HubSpot para la gestión de publicaciones
 class HubSpotService:
     def __init__(self):
         self.api_key = settings.HUBSPOT_API_KEY

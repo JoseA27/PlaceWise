@@ -2,6 +2,7 @@ import requests
 from django.conf import settings
 from .social_media_adapter import SocialMediaAdapter
 
+# Adaptador para la API de Facebook
 class FacebookAdapter(SocialMediaAdapter):
     def post(self, image_path, caption):
         url = f'https://graph.facebook.com/v11.0/me/photos'

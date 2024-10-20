@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 
+# Servicio de Cognito para la autenticación de usuarios
 class CognitoService:
     def __init__(self):
         self.client = boto3.client(

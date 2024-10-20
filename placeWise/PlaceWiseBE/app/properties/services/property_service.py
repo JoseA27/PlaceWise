@@ -1,4 +1,9 @@
 from ..repositories.property_repository import PropertyRepository
+from ..repositories.historial_promotor_repository import HistorialPromotorRepository
+from ..repositories.propiedad_promotor_repository import PropiedadPorPromotorRepository
+from ..repositories.promotor_repository import PromotorRepository
+from ..repositories.solicitud_repository import SolicitudRepository
+from ..repositories.multimedia_repository import MultimediaRepository
 from ..serializers import (
     SolicitudSerializer,
     PropiedadSerializer,
@@ -20,7 +25,7 @@ class PropertyService:
     @staticmethod
     def get_all_solicitudes():
         solicitudes = (
-            PropertyRepository.get_all_solicitudes()
+            SolicitudRepository.get_all_solicitudes()
         )  # Se obtienen todas las solicitudes
         solicitudes_serializer = SolicitudSerializer(
             solicitudes, many=True
@@ -36,7 +41,7 @@ class PropertyService:
         fecha_solicitud = date.today()
 
         # Llamar al repositorio para agregar la solicitud
-        solicitud = PropertyRepository.crear_solicitud(
+        solicitud = SolicitudRepository.crear_solicitud(
             id_vendedor=id_vendedor,
             id_comprador=id_comprador,
             id_propiedad=id_propiedad,
@@ -71,7 +76,7 @@ class PropertyService:
     # Método que obtiene todos los promotores
     @staticmethod
     def get_all_promotores():
-        promotores = PropertyRepository.get_all_promotores()
+        promotores = PromotorRepository.get_all_promotores()
         promotores_serializer = PromotorSerializer(promotores, many=True)
         return promotores_serializer.data
 
@@ -81,7 +86,7 @@ class PropertyService:
     def agregar_promotor(data):
         promotor_serializer = PromotorSerializer(data=data)
         if promotor_serializer.is_valid():
-            promotor = PropertyRepository.crear_promotor(
+            promotor = PromotorRepository.crear_promotor(
                 promotor_serializer.validated_data
             )
             return PromotorSerializer(promotor).data
@@ -91,7 +96,7 @@ class PropertyService:
     # Método que obtiene todas las propiedades por promotor
     @staticmethod
     def get_all_propiedades_por_promotor():
-        propiedades_por_promotor = PropertyRepository.get_all_propiedades_por_promotor()
+        propiedades_por_promotor = PropiedadPorPromotorRepository.get_all_propiedades_por_promotor()
         propiedad_por_promotor_serializer = PropiedadPorPromotorSerializer(
             propiedades_por_promotor, many=True
         )
@@ -104,7 +109,7 @@ class PropertyService:
         propiedad_por_promotor_serializer = PropiedadPorPromotorSerializer(data=data)
 
         if propiedad_por_promotor_serializer.is_valid():
-            propiedad_por_promotor = PropertyRepository.crear_propiedad_por_promotor(
+            propiedad_por_promotor = PropiedadPorPromotorRepository.crear_propiedad_por_promotor(
                 propiedad_por_promotor_serializer.validated_data
             )
             return PropiedadPorPromotorSerializer(propiedad_por_promotor).data
@@ -115,7 +120,7 @@ class PropertyService:
     # Método que obtiene todas las multimedia por propiedad
     @staticmethod
     def get_all_multimedia():
-        multimedia = PropertyRepository.get_all_multimedia()
+        multimedia = MultimediaRepository.get_all_multimedia()
         multimedia_serializer = MultimediaPorPropiedadSerializer(multimedia, many=True)
         return multimedia_serializer.data
 
@@ -125,7 +130,7 @@ class PropertyService:
     def agregar_multimedia(data):
         multimedia_serializer = MultimediaPorPropiedadSerializer(data=data)
         if multimedia_serializer.is_valid():
-            multimedia = PropertyRepository.crear_multimedia(
+            multimedia = MultimediaRepository.crear_multimedia(
                 multimedia_serializer.validated_data
             )
             return MultimediaPorPropiedadSerializer(multimedia).data
@@ -135,7 +140,7 @@ class PropertyService:
     # Método que obtiene todo el historial de promotor
     @staticmethod
     def get_all_historial_promotor():
-        historial = PropertyRepository.get_all_historial_promotor()
+        historial = HistorialPromotorRepository.get_all_historial_promotor()
         historial_serializer = HistorialPromotorSerializer(historial, many=True)
         return historial_serializer.data
 
@@ -145,7 +150,7 @@ class PropertyService:
     def agregar_historial_promotor(data):
         historial_serializer = HistorialPromotorSerializer(data=data)
         if historial_serializer.is_valid():
-            historial = PropertyRepository.crear_historial_promotor(
+            historial = HistorialPromotorRepository.crear_historial_promotor(
                 historial_serializer.validated_data
             )
             return HistorialPromotorSerializer(historial).data
