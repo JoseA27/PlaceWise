@@ -1,12 +1,13 @@
 # PlaceWise
 
 ## Descripción del Proyecto
+
 Plataforma web para la compra y venta de real estate que facilita los procesos al eliminar la necesidad buscar intermediarios con el objetivo de ahorrar costos y tiempo. Con un enfoque para la participación de usuarios que promocionen las propiedades. Dirigido a vendedores y compradores de propiedades.
 
 ## Requerimientos
 
-
 ### 1. Negociación
+
 - Cálculo de comisiones **1**
 - Reducciones legales **1**
 - Escrow **1**
@@ -16,6 +17,7 @@ Plataforma web para la compra y venta de real estate que facilita los procesos a
 - Disolución de trato **2**
 
 ### 2. Propiedades
+
 - Títulos legales **1**
 - Agua y electricidad **1**
 - Perfil de propiedad **1**
@@ -23,6 +25,7 @@ Plataforma web para la compra y venta de real estate que facilita los procesos a
 ### 3. Notificaciones **2**
 
 ### 4. Promotores
+
 - Perfil **1**
 - Subir propiedad **1**
 - Tarifas según equipo **2**
@@ -31,16 +34,19 @@ Plataforma web para la compra y venta de real estate que facilita los procesos a
 - Sistema de calificación **3**
 
 ### 5. Abogados
+
 - Revisión de estado **3**
 - Perfil **3**
 - Tarifas **3**
 - Subasta **3**
 
 ### 6. Compradores
+
 - Perfil **1**
 - Estatús **1**
 
 ### 7. Vendedores
+
 - Perfil **1**
 - Subir propiedad **1**
 - Mantenimiento diario **1**
@@ -48,31 +54,34 @@ Plataforma web para la compra y venta de real estate que facilita los procesos a
 - Estatus **1**
 
 ### 8. Back Office
+
 - Administración del sistema **1**
 - Servicio al cliente **1**
 
 ### 9. Search
+
 - Búsqueda por ubicación **1**
 - Búsqueda en mapa **2**
 - Búsquedas inteligentes **3**
 
 ## Arquitectura
+
 ![alt text](imagenes/arquitecturaImg.png)
 
 ## Definición del problema
 
 ### Problem Statement
+
 Lograr mantener una alta eficiencia de subida y carga de archivos multimedia para la visualiación de propiedades.
 
 ### StoryBoard
- 
-![alt text](imagenes/StoryboardImg.png)
 
+![alt text](imagenes/StoryboardImg.png)
 
 ## Requerimientos no funcionales
 
-
 ### Performance
+
 1. What are the expected response times for different functions under normal and peak load conditions?
 
 Para la consulta de propiedades, la información será almacenada en MongoDB, lo que permitirá un acceso rápido a los datos. Para la publicación de nuevas propiedades, el manejo de transacciones, registros e historial será con PostgreSQL para asegurar tiempos de respuesta eficientes. La gestión de usuarios estará respaldada por AWS Cognito para la autenticación y la gestión de tokens JWT. En condiciones normales el tiempo de respuesta tendría que ser menor a 1 segundo.
@@ -80,11 +89,11 @@ Para la consulta de propiedades, la información será almacenada en MongoDB, lo
 Cuando exista una alta demanda, como cuando con las subastas, el tiempo de respuesta podría subir a 2 o 3 segundos. Usando Amazon S3 para el almacenamiento de fotos y videos, y AWS Step Functions para coordinar flujos complejos de trabajo se garantiza que la carga se distribuya de manera eficiente en todo el sistema.
 
 2. How many concurrent users should the system support?
-  
+
 El sistema debe estar preparado para soportar inicialmente entre 500 y 1000 usuarios concurrentes, asegurando que se pueda manejar un número significativo de usuarios interactuando con la plataforma al mismo tiempo. A medida que el sistema crezca, debe escalar para soportar hasta 5000 usuarios concurrentes durante eventos de alta demanda, como subastas. AWS Cognito proporcionará la autenticación y gestión de sesiones para estos usuarios de manera segura, mientras que Django junto con Amazon S3 manejará las solicitudes relacionadas con la visualización de imágenes y videos. Para la base de datos, tanto MongoDB (para propiedades) como PostgreSQL (para registros e historiales) garantizarán una gestión eficiente de los datos.
 
 3. What are the performance benchmarks for critical operations?
-   
+
 Para la búsqueda de propiedades, que se realizará utilizando MongoDB, los resultados deberían retornar en menos de 1 segundo bajo condiciones normales y en menos de 2 segundos durante cargas máximas.
 En cuanto al procesamiento de pagos, que estará respaldado por PostgreSQL, las transacciones deberán completarse en menos de 3 segundos para evitar tiempos de espera largos durante operaciones financieras.
 Para la carga de imágenes y videos, que se almacenarán en Amazon S3, el tiempo de carga debería estar entre 2 y 5 segundos, dependiendo del tamaño de los archivos y de la conexión que tenga el cliente con el servidor.
@@ -106,13 +115,14 @@ AWS Cognito, que maneja la autenticación y emisión de tokens JWT, también deb
 Finalmente, AWS Step Functions debe ser capaz de manejar un mayor número de flujos de trabajo simultáneos, distribuyendo la carga de trabajo en varias instancias de los servicios backend a medida que el volumen de operaciones aumente, especialmente en el caso de subastas o notificaciones masivas.
 
 ### Reliability
+
 What is the acceptable downtime for the system?
 
-El tiempo de inactividad aceptable debe ser mínimo, ya que los usuarios esperan poder acceder al sistema en todo momento, especialmente en un entorno de bienes raíces donde las transacciones y consultas son sensibles al tiempo. Un 99.9% de tiempo de actividad sería el objetivo, lo que permite un máximo de menos de 9 horas de inactividad por año. 
+El tiempo de inactividad aceptable debe ser mínimo, ya que los usuarios esperan poder acceder al sistema en todo momento, especialmente en un entorno de bienes raíces donde las transacciones y consultas son sensibles al tiempo. Un 99.9% de tiempo de actividad sería el objetivo, lo que permite un máximo de menos de 9 horas de inactividad por año.
 
 1. How should the system handle failures and ensure data integrity?
 
-El sistema va a estar diseñado para ser tolerante a fallos, implementando mecanismos de recuperación automática y asegurando que los datos no se corrompan. Con el uso de replicación de bases de datos tanto en MongoDB como en PostgreSQL, asegurara que haya copias de los datos en múltiples nodos, evitando la pérdida de información en caso de fallo en un servidor. 
+El sistema va a estar diseñado para ser tolerante a fallos, implementando mecanismos de recuperación automática y asegurando que los datos no se corrompan. Con el uso de replicación de bases de datos tanto en MongoDB como en PostgreSQL, asegurara que haya copias de los datos en múltiples nodos, evitando la pérdida de información en caso de fallo en un servidor.
 Para el manejo de fallos en los servicios de backend, AWS Step Functions puede reintentar automáticamente las tareas fallidas o desviarlas a otras instancias, mientras que AWS Cognito asegura la continuidad en el manejo de sesiones y autenticaciones de usuarios sin interrupciones. En caso de fallos graves, Django y el middleware de seguridad deberían incluir un mecanismo de "circuit breaker" para redirigir temporalmente las solicitudes mientras se recuperan los servicios fallidos.
 
 2. What are the backup and recovery procedures?
@@ -120,22 +130,22 @@ Para el manejo de fallos en los servicios de backend, AWS Step Functions puede r
 El sistema debe contar con procedimientos de respaldo automáticos y manuales. Amazon S3, ya incluye copias de seguridad automáticas con redundancia en varias zonas de disponibilidad. En cuanto a las bases de datos, MongoDB puede programar respaldos automáticos a intervalos regulares.
 La restauración de datos deberá estar disponible en menos de 1 hora después de un incidente grave, utilizando instantáneas y respaldos almacenados en Amazon S3.
 
-
 ### Availability
+
 1. What are the uptime requirements for the system?
 
 El sistema debe garantizar un 99.9% de tiempo de actividad, lo que implica menos de 9 horas de inactividad al año. Esto es crítico para mantener una experiencia de usuario fluida, especialmente cuando se trata de transacciones de bienes raíces y pagos en línea. Para alcanzar este nivel de disponibilidad, es necesario implementar mecanismos de alta disponibilidad.
 Además, se debe considerar la replicación de bases de datos en varias zonas de disponibilidad para garantizar que tanto los datos almacenados en MongoDB como en PostgreSQL estén siempre accesibles. Amazon S3 garantiza alta disponibilidad de la multimedia.
 
 2. Are there specific times when the system must be available without fail?
-3. 
-Durante las subastas o eventos de venta especiales, el sistema debe estar disponible sin interrupciones para garantizar que los usuarios puedan participar y realizar transacciones en tiempo real.
-Horarios comerciales y fines de semana, cuando es probable que la mayoría de los usuarios realicen búsquedas, consultas o pagos, el sistema debe estar disponible al 100%. 
+3. Durante las subastas o eventos de venta especiales, el sistema debe estar disponible sin interrupciones para garantizar que los usuarios puedan participar y realizar transacciones en tiempo real.
+   Horarios comerciales y fines de semana, cuando es probable que la mayoría de los usuarios realicen búsquedas, consultas o pagos, el sistema debe estar disponible al 100%.
 
 ### Security
+
 1. What are the security requirements for data storage and transmission?
 
-Todos los datos  como las propiedades almacenadas en MongoDB y los registros transaccionales gestionados a través de PostgreSQL, deben ser cifrados. Para la transmisión de datos entre los usuarios y el sistema, se debe utilizar HTTPS con certificados SSL/TLS para cifrar todas las comunicaciones y evitar que los datos sean interceptados o manipulados durante el tránsito.
+Todos los datos como las propiedades almacenadas en MongoDB y los registros transaccionales gestionados a través de PostgreSQL, deben ser cifrados. Para la transmisión de datos entre los usuarios y el sistema, se debe utilizar HTTPS con certificados SSL/TLS para cifrar todas las comunicaciones y evitar que los datos sean interceptados o manipulados durante el tránsito.
 Además, las fotos y videos almacenados en Amazon S3 deben estar protegidos mediante cifrado en reposo utilizando S3 Server-Side Encryption (SSE) o cifrado a nivel de cliente antes de subir los archivos al servidor. Todos los accesos a los recursos en el sistema deben estar controlados mediante políticas estrictas de acceso basado en roles, tanto a nivel de base de datos como de almacenamiento en la nube.
 
 2. How should user authentication and authorization be managed?
@@ -145,9 +155,10 @@ En cuanto a la autorización, el sistema implementará un control de acceso basa
 
 3. Are there any compliance requirements related to data security?
 
-Dado que se manejarán datos personales y financieros, el sistema debe cumplir con normativas de protección de datos, como el Reglamento General de Protección de Datos (GDPR) de la Unión Europea y la Ley de Protección de Datos Personales en muchos países de América Latina. Esto implicara obtener el consentimiento explícito de los usuarios para el procesamiento de sus datos y garantizar el derecho de los usuarios a acceder, modificar o eliminar sus datos. 
+Dado que se manejarán datos personales y financieros, el sistema debe cumplir con normativas de protección de datos, como el Reglamento General de Protección de Datos (GDPR) de la Unión Europea y la Ley de Protección de Datos Personales en muchos países de América Latina. Esto implicara obtener el consentimiento explícito de los usuarios para el procesamiento de sus datos y garantizar el derecho de los usuarios a acceder, modificar o eliminar sus datos.
 
 ### Usability
+
 1. What are the usability standards for the user interface?
 
 La interfaz de usuario (UI) debe ser intuitiva, fácil de navegar y visualmente atractiva, siguiendo principios de diseño centrados en el usuario. Debe ofrecer una experiencia fluida, minimizando el número de clics necesarios para realizar acciones clave, como buscar propiedades, hacer pagos o consultar detalles. El diseño debe seguir estándares, para garantizar una apariencia consistente y adaptada a diferentes tamaños de pantalla.
@@ -158,9 +169,9 @@ El uso de colores debe cumplir con pautas de accesibilidad para que los textos s
 
 2. How should the system accommodate users with disabilities?
 
-    + Textos alternativos para imágenes de propiedades y otros contenidos visuales, para que los lectores de pantalla puedan describir lo que aparece.
-    + Navegación por teclado para asegurar que todos los elementos interactivos puedan ser accesibles sin necesidad de usar un ratón.
-    +  El sistema debe ofrecer la posibilidad de ajustar el tamaño de la fuente y el contraste de los colores, ayudando a personas con discapacidades visuales leves o moderadas.
+   - Textos alternativos para imágenes de propiedades y otros contenidos visuales, para que los lectores de pantalla puedan describir lo que aparece.
+   - Navegación por teclado para asegurar que todos los elementos interactivos puedan ser accesibles sin necesidad de usar un ratón.
+   - El sistema debe ofrecer la posibilidad de ajustar el tamaño de la fuente y el contraste de los colores, ayudando a personas con discapacidades visuales leves o moderadas.
 
 3. Are there specific requirements for user training and documentation?
 
@@ -171,8 +182,8 @@ Preguntas frecuentes (FAQs) integradas directamente en la plataforma o disponibl
 Para los administradores del sistema, se debe proporcionar documentación técnica detallada que cubra temas como la gestión de propiedades, la administración de usuarios y la configuración de pagos. Esto incluiría guías de solución de problemas comunes y prácticas recomendadas.
 En términos de capacitación, para equipos grandes (como agencias de bienes raíces), se puede ofrecer una capacitación en línea o webinars que guíen a los usuarios a través del sistema.
 
-
 ### Maintainability
+
 1. ow easy should it be to update and modify the system?
 
 Las actualizaciones y modificaciones al sistema deben tener un tiempo de inactividad máximo de 30 minutos para cambios. El uso de Django como framework backend facilita las actualizaciones del código gracias a su arquitectura modular y soporte de migraciones de bases de datos. Para el frontend, la integración con React JS asegura que las modificaciones en la interfaz de usuario puedan realizarse sin afectar la lógica del servidor.
@@ -184,9 +195,10 @@ El sistema debe contar con registro de eventos (logging) detallado y centralizad
 2. How should the system handle version control and deployment?
 
 El sistema debe utilizar Git para el control de versiones, almacenando el código fuente en un repositorio central. Todo el código debe estar versionado de manera que cada cambio quede documentado y rastreable. Para garantizar que los cambios en el código no interrumpan el funcionamiento, se debe implementar un flujo de trabajo basado en ramas, con ramas dedicadas para desarrollo, pruebas, y producción.
-El despliegue debe ser gestionado mediante CI/CD asegurando que cada versión del sistema pase por pruebas automáticas antes de ser desplegada. 
+El despliegue debe ser gestionado mediante CI/CD asegurando que cada versión del sistema pase por pruebas automáticas antes de ser desplegada.
 
 ### Interoperability
+
 1. How should the system integrate with existing software and hardware?
 
 El sistema debe integrarse fácilmente con otros sistemas de software y hardware mediante APIs RESTful. Django proporcionará estas APIs para interactuar con otros sistemas de terceros, como la integración con HubSpot para la gestión de redes sociales o con Google Maps para la visualización de propiedades en mapas. Las APIs deben estar documentadas utilizando Swagger/OpenAPI para asegurar que otros sistemas puedan consumirlas de manera clara y consistente.
@@ -195,32 +207,34 @@ A nivel de base de datos, el sistema debe poder sincronizarse con otras bases de
 2. Are there any standards or protocols that the system must adhere to?
 
 El sistema debe adherirse a estándares de autenticación y autorización seguros, como OAuth 2.0 y OpenID Connect, implementados a través de AWS Cognito para la autenticación de usuarios. Esto garantizará que cualquier integración con otros sistemas que también utilicen estos estándares sea fluida, facilitando la interoperabilidad con plataformas de terceros.
-Para la seguridad en la transmisión de datos, el sistema debe utilizar el protocolo HTTPS con certificados SSL/TLS para todas las comunicaciones, asegurando que los datos estén cifrados durante su transferencia entre los usuarios y los servidores. 
+Para la seguridad en la transmisión de datos, el sistema debe utilizar el protocolo HTTPS con certificados SSL/TLS para todas las comunicaciones, asegurando que los datos estén cifrados durante su transferencia entre los usuarios y los servidores.
 
 ### Compliance
+
 1. What legal and regulatory requirements must the system comply with?
 
 El sistema debe cumplir con regulaciones de protección de datos como el Reglamento General de Protección de Datos (GDPR) de la Unión Europea, que exige el consentimiento explícito de los usuarios para recopilar, procesar y almacenar sus datos personales. Esto incluye proporcionar mecanismos para que los usuarios puedan ejercer sus derechos de acceso, rectificación, y eliminación de sus datos.
 En países donde se aplican leyes locales de protección de datos, como la Ley de Protección de Datos Personales de Costa Rica o la Ley de Privacidad del Consumidor de California (CCPA), se deben implementar medidas similares, como la portabilidad de los datos y la capacidad de eliminación de datos personales a petición del usuario.
 
 2. Are there industry-specific standards that need to be followed?
-   
-+ PCI-DSS (Payment Card Industry Data Security Standard): Dado que el sistema gestiona transacciones financieras (pagos por propiedades), debe cumplir con los estándares PCI-DSS, que exigen:
-  
-  + Cifrado de los datos de tarjetas de crédito durante su almacenamiento y transmisión usando tecnologías como TLS 1.2 o superior para garantizar que los datos financieros estén seguros.
-  + Auditorías regulares de seguridad y monitoreo de las transacciones a través de AWS CloudTrail para detectar posibles actividades fraudulentas o vulnerabilidades.
-  + Almacenamiento seguro de los datos de pagos en PostgreSQL, con cifrado tanto en reposo como en tránsito.
-  
-+ ISO/IEC 27001: El sistema debe seguir este estándar internacional para la gestión de la seguridad de la información, asegurando que los datos del sistema estén protegidos mediante controles de seguridad robustos. AWS ofrece servicios que cumplen con ISO/IEC 27001, lo que garantiza que la infraestructura subyacente cumpla con los requisitos de seguridad.
-  
+
+- PCI-DSS (Payment Card Industry Data Security Standard): Dado que el sistema gestiona transacciones financieras (pagos por propiedades), debe cumplir con los estándares PCI-DSS, que exigen:
+
+  - Cifrado de los datos de tarjetas de crédito durante su almacenamiento y transmisión usando tecnologías como TLS 1.2 o superior para garantizar que los datos financieros estén seguros.
+  - Auditorías regulares de seguridad y monitoreo de las transacciones a través de AWS CloudTrail para detectar posibles actividades fraudulentas o vulnerabilidades.
+  - Almacenamiento seguro de los datos de pagos en PostgreSQL, con cifrado tanto en reposo como en tránsito.
+
+- ISO/IEC 27001: El sistema debe seguir este estándar internacional para la gestión de la seguridad de la información, asegurando que los datos del sistema estén protegidos mediante controles de seguridad robustos. AWS ofrece servicios que cumplen con ISO/IEC 27001, lo que garantiza que la infraestructura subyacente cumpla con los requisitos de seguridad.
+
 Normas específicas de bienes raíces:
 Dependiendo del país o región, el sistema puede necesitar cumplir con normativas específicas del sector inmobiliario, como leyes que regulan las transacciones electrónicas de bienes raíces y la protección de los datos de las propiedades. Esto incluye la implementación de firmas electrónicas legalmente válidas mediante integraciones con servicios como DocuSign, cumpliendo con los requisitos de autenticidad e integridad de los contratos.
 Normativas anti-lavado de dinero (AML): Si el sistema facilita grandes transacciones financieras, debe cumplir con las regulaciones de AML, lo que implica la implementación de mecanismos para verificar la identidad de los usuarios y reportar transacciones sospechosas.
 
 ### Extensibility
+
 1. How should the system be designed to accommodate future enhancements?
 
-El sistema debe diseñarse utilizando una arquitectura modular. En el backend, Django permite agregar nuevas funcionalidades como servicios independientes dentro del mismo monolito. Además, se debe implementar un sistema de feature toggles utilizando LaunchDarkly, lo que permitirá activar o desactivar nuevas funciones sin necesidad de realizar grandes despliegues. Esto asegura que las nuevas características puedan ser probadas y lanzadas gradualmente a los usuarios sin interrumpir la operación. 
+El sistema debe diseñarse utilizando una arquitectura modular. En el backend, Django permite agregar nuevas funcionalidades como servicios independientes dentro del mismo monolito. Además, se debe implementar un sistema de feature toggles utilizando LaunchDarkly, lo que permitirá activar o desactivar nuevas funciones sin necesidad de realizar grandes despliegues. Esto asegura que las nuevas características puedan ser probadas y lanzadas gradualmente a los usuarios sin interrumpir la operación.
 
 2. Are there specific areas where extensibility is critical?
 
@@ -229,10 +243,11 @@ A medida que el sistema crezca y maneje más propiedades, pagos y usuarios, ser�
 El uso de React JS como frontend facilita la modularidad y extensibilidad de la interfaz de usuario, permitiendo agregar nuevas páginas o componentes sin afectar las funcionalidades existentes. React debe estar configurado de manera que nuevos módulos de UI puedan integrarse con facilidad.
 
 ### Localization
+
 1. What are the requirements for supporting multiple languages and regions?
-Django ya proporciona soporte nativo para la internacionalización (i18n) y localización (l10n), lo que permite que la interfaz del sistema sea traducida de manera eficiente a diferentes idiomas. Los archivos de traducción deben utilizar el estándar gettext (.po y .mo), permitiendo que los desarrolladores y traductores gestionen las traducciones de manera centralizada.
-El sistema debe permitir a los usuarios seleccionar su idioma preferido desde la interfaz de usuario, con soporte inicial para inglés y español, y con la posibilidad de agregar más idiomas en el futuro. 
-Las traducciones de contenidos estáticos, como los nombres de las propiedades o descripciones, deben ser almacenadas en MongoDB con campos específicos para cada idioma. Además, el sistema debe ser capaz de servir automáticamente contenido basado en la localización geográfica del usuario mediante la geolocalización de IP o configuraciones manuales de región.
+   Django ya proporciona soporte nativo para la internacionalización (i18n) y localización (l10n), lo que permite que la interfaz del sistema sea traducida de manera eficiente a diferentes idiomas. Los archivos de traducción deben utilizar el estándar gettext (.po y .mo), permitiendo que los desarrolladores y traductores gestionen las traducciones de manera centralizada.
+   El sistema debe permitir a los usuarios seleccionar su idioma preferido desde la interfaz de usuario, con soporte inicial para inglés y español, y con la posibilidad de agregar más idiomas en el futuro.
+   Las traducciones de contenidos estáticos, como los nombres de las propiedades o descripciones, deben ser almacenadas en MongoDB con campos específicos para cada idioma. Además, el sistema debe ser capaz de servir automáticamente contenido basado en la localización geográfica del usuario mediante la geolocalización de IP o configuraciones manuales de región.
 
 2. How should the system handle different date, time, and currency formats?
 
@@ -242,29 +257,27 @@ El sistema debe poder manejar diferentes formatos de fecha, hora y moneda en fun
 
 1. What documentation is required for users, administrators, and developers?
 
-+ Usuarios finales:
-  
-    + La documentación para los usuarios debe incluir manuales de usuario que cubran las funciones clave del sistema, como buscar propiedades, realizar pagos y gestionar su cuenta. Además de los manuales, se deben proporcionar tutoriales cortos mediante videos que guíen a los usuarios a través de tareas comunes.
+- Usuarios finales:
 
-    + La interfaz de usuario puede incluir tooltips y guías contextuales que expliquen las funciones directamente dentro de la aplicación en tiempo real, lo cual puede ser manejado a través de una biblioteca como Intro.js o react-tour.
-  
+  - La documentación para los usuarios debe incluir manuales de usuario que cubran las funciones clave del sistema, como buscar propiedades, realizar pagos y gestionar su cuenta. Además de los manuales, se deben proporcionar tutoriales cortos mediante videos que guíen a los usuarios a través de tareas comunes.
+
+  - La interfaz de usuario puede incluir tooltips y guías contextuales que expliquen las funciones directamente dentro de la aplicación en tiempo real, lo cual puede ser manejado a través de una biblioteca como Intro.js o react-tour.
+
 Administradores del sistema:
-  
-  + Los administradores necesitan una documentación más técnica que cubra la configuración y mantenimiento del sistema, incluyendo cómo gestionar usuarios, administrar las bases de datos (MongoDB para propiedades y PostgreSQL para pagos), y manejar configuraciones de seguridad con AWS Cognito para la autenticación de usuarios.
-    
-  + Además, los administradores deben tener acceso a documentación detallada de las APIs proporcionadas por Django REST Framework para asegurar que puedan integrar y monitorizar los servicios de manera efectiva.
 
-+ Desarrolladores:
-  
-  + Los desarrolladores necesitan una documentación extensa que incluya la arquitectura del sistema, flujos de trabajo CI/CD, y cómo agregar nuevas funcionalidades o realizar modificaciones. Esto debe incluir una guía para el control de versiones utilizando Git y las políticas de ramas para desarrollo y producción.
-  
-  + La documentación del código debe estar integrada dentro del mismo mediante comentarios claros y generadores automáticos de documentación. Las APIs RESTful deben estar documentadas utilizando Swagger/OpenAPI, permitiendo a otros desarrolladores comprender e integrar nuevas funcionalidades fácilmente.
+- Los administradores necesitan una documentación más técnica que cubra la configuración y mantenimiento del sistema, incluyendo cómo gestionar usuarios, administrar las bases de datos (MongoDB para propiedades y PostgreSQL para pagos), y manejar configuraciones de seguridad con AWS Cognito para la autenticación de usuarios.
+- Además, los administradores deben tener acceso a documentación detallada de las APIs proporcionadas por Django REST Framework para asegurar que puedan integrar y monitorizar los servicios de manera efectiva.
+
+- Desarrolladores:
+
+  - Los desarrolladores necesitan una documentación extensa que incluya la arquitectura del sistema, flujos de trabajo CI/CD, y cómo agregar nuevas funcionalidades o realizar modificaciones. Esto debe incluir una guía para el control de versiones utilizando Git y las políticas de ramas para desarrollo y producción.
+
+  - La documentación del código debe estar integrada dentro del mismo mediante comentarios claros y generadores automáticos de documentación. Las APIs RESTful deben estar documentadas utilizando Swagger/OpenAPI, permitiendo a otros desarrolladores comprender e integrar nuevas funcionalidades fácilmente.
 
 2. How should the documentation be maintained and updated?
 
 La documentación debe mantenerse actualizada en tiempo real utilizando un sistema de control de versiones, como Git, asegurando que cualquier cambio en el código o en los procedimientos sea reflejado inmediatamente en la documentación.
 Para garantizar que la documentación esté siempre alineada con el estado actual del sistema, se integrará el proceso de CI/CD. Cada nueva funcionalidad o actualización del sistema debe incluir automáticamente una actualización de la documentación correspondiente antes de ser aprobada para producción. Los desarrolladores y administradores pueden utilizar herramientas para generar documentación actualizada automáticamente cada vez que se realicen cambios en el repositorio de código.
-
 
 # Diseño del Frontend
 
@@ -275,6 +288,7 @@ Para garantizar que la documentación esté siempre alineada con el estado actua
 ![alt text](imagenes/Matriz%20de%20Requerimientos%20vs%20Componentes.png)
 
 ### Subir Propiedad
+
 ![alt text](imagenes/PantallaSubirPropiedad.png)
 
 ### Descripción y Acciones:
@@ -284,6 +298,7 @@ En la parte superior de la pantalla, se despliega un formulario para agregar los
 ### Acciones del Usuario:
 
 - **Completar Formulario**: Los campos que el usuario debe llenar incluyen:
+
   - Nombre de la Propiedad
   - Dirección
   - Tipo de Propiedad (seleccionado desde un menú desplegable, por ejemplo, Casa, Departamento, etc.)
@@ -298,7 +313,6 @@ En la parte superior de la pantalla, se despliega un formulario para agregar los
 ### Mensajes de Error:
 
 - **Campos Requeridos**: Si el usuario intenta guardar o avanzar sin completar alguno de los campos requeridos, aparecerá un mensaje de error debajo del campo faltante.
-  
 - **Formato Incorrecto**: Si el usuario ingresa datos con formato incorrecto (por ejemplo, letras en el campo de Precio), el sistema resaltará el campo afectado y mostrará un mensaje de error específico debajo.
 
 ### Mensajes de Confirmación:
@@ -306,6 +320,7 @@ En la parte superior de la pantalla, se despliega un formulario para agregar los
 - **Datos Guardados Correctamente**: Si los datos son ingresados correctamente, aparecerá un mensaje de confirmación indicando que la información fue guardada con éxito. El usuario será redirigido a la pantalla "Agregar Media" para continuar con la carga de archivos.
 
 ### Agregar Contenido multimedia
+
 ![alt text](imagenes/PantallaAgregarMedia1.png)
 ![alt text](imagenes/PantallaAgregarMedia2.png)
 
@@ -325,7 +340,6 @@ La pantalla "Agregar Media" permite al usuario subir diversos tipos de archivos 
 ### Acciones de Carga:
 
 - **Carrusel de Imágenes**: Las imágenes cargadas se muestran en un carrusel. El usuario puede deslizar o usar las flechas laterales para navegar entre las imágenes. Si no se ha cargado ninguna imagen, se mostrará un mensaje que indica "No hay imágenes".
-  
 - **Videos de la Propiedad**: Los videos cargados se muestran en una sección con controles de reproducción. Si no se ha cargado ningún video, se mostrará un mensaje que indica "No hay videos".
 
 - **Documentos de la Propiedad**: Los documentos cargados se muestran con su nombre de archivo. Si no se ha cargado ningún documento, se mostrará un ícono por defecto con el mensaje "No hay documentos".
@@ -336,18 +350,17 @@ La pantalla "Agregar Media" permite al usuario subir diversos tipos de archivos 
 
 ### Mensajes de Error
 
-- **Campos Requeridos**: 
+- **Campos Requeridos**:
   Si el usuario intenta avanzar sin agregar archivos a alguna de las secciones (fotos, videos, documentos, planos, experiencias o vista 3D) que sean obligatorias, aparecerá un mensaje de error bajo la sección correspondiente indicando que se requiere al menos un archivo.
 
-- **Tamaño de Archivo Excedido**: 
+- **Tamaño de Archivo Excedido**:
   Si el usuario intenta cargar un archivo que excede el tamaño máximo permitido (por ejemplo, 100MB para los archivos 3D o 500MB para videos), se mostrará un mensaje de error indicando: "El archivo supera el tamaño máximo permitido. Por favor, sube un archivo de menor tamaño."
 
-- **Formato Incorrecto**: 
+- **Formato Incorrecto**:
   Si el usuario intenta cargar un archivo en un formato no soportado (por ejemplo, un archivo no STL en la sección de vista 3D), aparecerá un mensaje de error indicando: "Formato de archivo no permitido. Por favor, sube un archivo en un formato válido."
 
-- **Falló la Carga del Archivo**: 
+- **Falló la Carga del Archivo**:
   Si ocurre un error durante la carga del archivo (por ejemplo, debido a una falla en la red), aparecerá un mensaje de error indicando: "Hubo un error al cargar el archivo. Por favor, intenta nuevamente."
-
 
 ### Mensajes de Confirmación:
 
@@ -358,13 +371,46 @@ La pantalla "Agregar Media" permite al usuario subir diversos tipos de archivos 
 - **Cancelar**: Permite al usuario cancelar la carga de archivos.
 - **Guardar Cambios**: Guarda los archivos cargados y muestra un mensaje de confirmación al usuario.
 
-
-## Diagrama de capas y clases
+### Diagrama de capas y clases
 
 ![alt text](imagenes/Diagrama%20de%20Clases%20FE.jpg)
 
-## Boilerplate
+### Boilerplate
 
 Link al README del boilerplate de UI: https://github.com/JoseA27/PlaceWise/blob/main/placeWise/PlaceWiseUI/README.md
 
+## Diseño de Modelo de Datos
 
+### Modelo de Datos para Propiedad
+
+![alt text](imagenes/propiedad.png)
+
+### Modelo de Datos para Promotor
+
+![alt text](imagenes/promotor.png)
+
+### Modelo de Datos para Propiedad por Promotor
+
+![alt text](imagenes/propiedadXpromotor.png)
+
+### Modelo de Datos para Solicitudes
+
+![alt text](imagenes/solicitudes.png)
+
+### Modelo de Datos para Multimedia
+
+![alt text](imagenes/multimedia.png)
+
+### Modelo de Datos para Historial de Promotor
+
+![alt text](imagenes/historialPromotor.png)
+
+### Link de los modelos en código:
+
+Diseño en JSON para cada Collection: https://github.com/JoseA27/PlaceWise/tree/main/modeloCollections
+
+Modelado de las collection con Djongo (ORM): https://github.com/JoseA27/PlaceWise/tree/main/placeWise/PlaceWiseBE/app/properties/models
+
+### Link del Script de inicialización para la base de datos:
+
+https://github.com/JoseA27/PlaceWise/tree/main/placeWise/PlaceWiseBE/mongo-init-scripts
