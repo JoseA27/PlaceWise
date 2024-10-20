@@ -14,9 +14,9 @@ class Lead(models.Model):
         abstract = True
 
 
-class PropiedadesPorPromotor(models.Model):
-    idPropiedad = models.CharField(max_length=255)
-    idPromotor = models.CharField(max_length=255)
+class PropiedadPorPromotor(models.Model):
+    idPropiedad = models.IntegerField()
+    idPromotor = models.IntegerField()
     idPaquete = models.IntegerField()
     versionPaquete = models.CharField(max_length=50)
     fechaAsignacion = models.DateField()
@@ -25,4 +25,4 @@ class PropiedadesPorPromotor(models.Model):
     leads = models.ArrayField(model_container=Lead)
 
     class Meta:
-        db_table = 'propiedadesPorPromotor'
+        db_table = "propiedadesPorPromotor"

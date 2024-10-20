@@ -1,29 +1,7 @@
 from djongo import models
 
 
-class Imagen(models.Model):
-    nombre = models.CharField(max_length=255)
-    descripcion = models.TextField()
-    fechaSubida = models.DateField()
-    usuarioSubida = models.CharField(max_length=255)
-    url = models.URLField()
-
-    class Meta:
-        abstract = True
-
-
-class Video(models.Model):
-    nombre = models.CharField(max_length=255)
-    descripcion = models.TextField()
-    fechaSubida = models.DateField()
-    usuarioSubida = models.CharField(max_length=255)
-    url = models.URLField()
-
-    class Meta:
-        abstract = True
-
-
-class Modelo3D(models.Model):
+class Multimedia(models.Model):
     nombre = models.CharField(max_length=255)
     descripcion = models.TextField()
     fechaSubida = models.DateField()
@@ -35,11 +13,11 @@ class Modelo3D(models.Model):
 
 
 class MultimediaPorPropiedad(models.Model):
-    idPropiedad = models.CharField(max_length=255)
-    idPromotor = models.CharField(max_length=255)
-    imagenes = models.ArrayField(model_container=Imagen)
-    videos = models.ArrayField(model_container=Video)
-    modelos3D = models.ArrayField(model_container=Modelo3D)
+    idPropiedad = models.IntegerField()
+    idPromotor = models.IntegerField()
+    imagenes = models.ArrayField(model_container=Multimedia)
+    videos = models.ArrayField(model_container=Multimedia)
+    modelos3D = models.ArrayField(model_container=Multimedia)
 
     class Meta:
-        db_table = 'historialPromotor'
+        db_table = "multimediaPorPropiedad"

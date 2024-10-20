@@ -10,9 +10,9 @@ class Comprador(models.Model):
 
 
 class HistorialVenta(models.Model):
-    idPropiedad = models.CharField(max_length=255)
+    idPropiedad = models.IntegerField()
     fechaVenta = models.DateField()
-    montoVenta = models.FloatField()
+    montoVenta = models.DecimalField(max_digits=15, decimal_places=2)
     comprador = models.EmbeddedField(model_container=Comprador)
 
     class Meta:
@@ -20,8 +20,8 @@ class HistorialVenta(models.Model):
 
 
 class HistorialPromotor(models.Model):
-    idPromotor = models.CharField(max_length=255)
+    idPromotor = models.IntegerField()
     historial = models.ArrayField(model_container=HistorialVenta)
 
     class Meta:
-        db_table = 'historialPromotor'
+        db_table = "historialPromotor"

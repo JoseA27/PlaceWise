@@ -21,7 +21,7 @@ db.promotores.insertMany([
             "facebook": "fb.com/promotor1",
             "instagram": "instagram.com/promotor1",
             "twitter": "twitter.com/promotor1",
-            "TikTok": "tiktok.com/@promotor1"
+            "tiktok": "tiktok.com/@promotor1"
         },
         "categoria": {
             "rating": 4.5,
