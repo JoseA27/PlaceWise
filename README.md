@@ -68,6 +68,82 @@ Plataforma web para la compra y venta de real estate que facilita los procesos a
 
 ![alt text](imagenes/arquitecturaImg.png)
 
+# Checklist Componentes de Diseño
+
+## Diseño de la interacción humano computador
+
+- [x] UI
+- [ ] UX
+
+## Diseño de la seguridad
+### Authenticate
+
+- [ ] Password
+- [ ] Cert
+- [ ] Api Keys
+- [ ] Tokens
+- [ ] Secrets/Key
+- [ ] MFA
+- [x] Products, Azure, AWS Cognito, Okta Auth0, OAuth, Firebase
+
+### Authorization
+
+- [ ] FGA
+- [x] Roles/Groups
+- [ ] Políticas
+- [ ] Data Governance
+- [x] Client Rendering / Server Side Rendering
+
+## Diseño de las capas de objetos
+
+- [x] Patrones de Creaciones O.O
+- [x] Patrones Estructurales O.O
+- [ ] Patrones de Comportamiento O.O
+- [x] Patrones de Arquitectura
+
+## Diseño de la Arquitectura del Backend
+
+- [x] REST
+- [ ] GraphQL
+- [ ] gRPC
+- [x] Monolithic
+- [ ] Microservices
+- [x] On Premise
+- [ ] Serverless
+- [ ] Notifications Pub/Subs
+- [ ] apiGateway
+
+## Arquitectura de Acceso de Datos
+
+- [ ] SQL
+- [x] NoSQL
+- [x] Base de datos distribuida
+- [ ] Big Data / ML
+- [ ] Tenancy y Seguridad de Datos
+- [x] Diseño de Datos
+- [ ] Nativo
+- [ ] Cache
+- [ ] Pooling
+- [x] ORM
+- [ ] Stored Procedures
+- [ ] Statements
+- [ ] Tolerancia a Fallas
+  - [ ] Replicación
+  - [ ] Sharding
+  - [ ] Clustering
+- [ ] Drivers de base de datos
+
+
+
+
+
+
+
+
+
+
+
+
 ## Definición del problema
 
 ### Problem Statement
