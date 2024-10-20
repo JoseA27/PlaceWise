@@ -133,15 +133,18 @@ Plataforma web para la compra y venta de real estate que facilita los procesos a
   - [ ] Clustering
 - [ ] Drivers de base de datos
 
+## Patrones de diseño para Cloud Platforms
 
+- [ ] Ambassador
+- [x] Request-Replay
+- [ ] Circuit Breaker
+- [ ] Compensating Transaction
+- [ ] Gate Keeper
+- [ ] Gateway Routing
+- [ ] Priority Queue
+- [ ] Sharding
 
-
-
-
-
-
-
-
+Link del PDF: https://github.com/JoseA27/PlaceWise/blob/main/Componentes%20Del%20Disen%CC%83o%20De%20Software%20End%20To%20End%20-%20PlaceWise.pdf
 
 
 ## Definición del problema
