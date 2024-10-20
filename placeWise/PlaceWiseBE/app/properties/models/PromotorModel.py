@@ -1,5 +1,10 @@
 from djongo import models
 
+# Documentación del modelo para la colección de promotores
+# Modelo que representa a un promotor
+# Clases abstractas: RedesSociales, HistorialTarifa, Paquete, Categoria sirven para representar los datos de las redes sociales,
+# historial de tarifas, paquetes y categoría respectivamente en los campos embebidos de Promotor
+
 
 class RedesSociales(models.Model):
     facebook = models.URLField()
@@ -8,7 +13,7 @@ class RedesSociales(models.Model):
     tiktok = models.URLField()
 
     class Meta:
-        abstract = True
+        abstract = True  # Se establece como abstracta para que no se cree una colección en la base de datos
 
 
 class HistorialTarifa(models.Model):
@@ -43,14 +48,23 @@ class Categoria(models.Model):
         abstract = True
 
 
+# Clase Promotor
+# Modelo que representa a un promotor
+# se modela la estructura de la colección de promotores
+
+
 class Promotor(models.Model):
     id = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=255)
     descripcion = models.TextField()
     telefono = models.CharField(max_length=20)
     correo = models.EmailField()
-    redesSociales = models.EmbeddedField(model_container=RedesSociales)
+    redesSociales = models.EmbeddedField(
+        model_container=RedesSociales
+    )  # Se establece como campo embebido
     categoria = models.EmbeddedField(model_container=Categoria)
 
     class Meta:
-        db_table = "promotores"
+        db_table = (
+            "promotores"  # Se establece el nombre de la colección en la base de datos
+        )

@@ -5,13 +5,20 @@ from ..models.PromotorModel import Promotor
 from ..models.MultimediaPorPropiedad import MultimediaPorPropiedad
 from ..models.HistorialPromotor import HistorialPromotor
 
+# Documentación
+# Clase que representa el repositorio de propiedades
+# Se encarga de realizar las operaciones de lectura y escritura en la base de datos
+
 
 class PropertyRepository:
-
+    # Solicitudes
+    # Método que obtiene todas las solicitudes
     @staticmethod
     def get_all_solicitudes():
         return SolicitudPromotor.objects.all()
 
+    # Método que crea una solicitud
+    # recibe los datos validados de la solicitud
     @staticmethod
     def crear_solicitud(
         id_vendedor, id_comprador, id_propiedad, fecha_solicitud, status
@@ -34,10 +41,13 @@ class PropertyRepository:
             return None
 
     # Propiedades
+    # Método que obtiene todas las propiedades
     @staticmethod
     def get_all_propiedades():
         return Propiedad.objects.all()
 
+    # metodo que crea una propiedad
+    # recibe los datos validados de la propiedad
     @staticmethod
     def crear_propiedad(validated_data):
         try:
@@ -48,10 +58,13 @@ class PropertyRepository:
             return None
 
     # Promotores
+    # Método que obtiene todos los promotores
     @staticmethod
     def get_all_promotores():
         return Promotor.objects.all()
 
+    # Método que crea un promotor
+    # recibe los datos validados del promotor
     @staticmethod
     def crear_promotor(validated_data):
         try:
