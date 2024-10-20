@@ -48,10 +48,6 @@ PlaceWiseUI/
 │       ├── FileUploadTemplate.jsx
 │       ├── MainLayout.jsx
 │       └── PropertyFormTemplate.jsx
-├── services/
-│   ├── apiService.js
-│   ├── propertyService.js
-│   └── mediaService.js
 ├── auth/
 │   ├── AuthContext.jsx
 │   ├── useAuth.js
@@ -114,13 +110,6 @@ Almacena todos los componentes React, organizados en subcarpetas:
 - **pages/**: Contiene las vistas principales del proyecto, como las páginas para cargar propiedades y medios.
     - **UploadMediaPage.jsx**: Página para agregar media a la propiedad.
     - **UploadPropertyPage.jsx**: Página principal para la creación de propiedades.
-
-#### **services/**: 
-Módulos que gestionan la interacción con APIs externas y el backend.
-
-- **apiService.js**: Servicio general para las llamadas a la API.
-- **propertyService.js**: Servicio que gestiona la lógica relacionada con las propiedades.
-- **mediaService.js**: Servicio que gestiona la subida de archivos multimedia (imágenes, videos, documentos).
 
 #### **auth/**:
 Módulos relacionados con la autenticación de usuarios.
