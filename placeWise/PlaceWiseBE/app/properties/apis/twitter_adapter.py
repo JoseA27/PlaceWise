@@ -2,6 +2,7 @@ import requests
 from django.conf import settings
 from .social_media_adapter import SocialMediaAdapter
 
+# Adaptador para la API de Twitter
 class TwitterAdapter(SocialMediaAdapter):
     def post(self, image_path, tweet):
         url = 'https://upload.twitter.com/1.1/media/upload.json'

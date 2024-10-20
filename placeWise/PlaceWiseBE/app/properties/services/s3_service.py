@@ -2,6 +2,8 @@ import boto3
 from django.conf import settings
 from botocore.exceptions import NoCredentialsError
 
+# Servicio de S3 para la gestión de archivos
+
 class S3Service:
     def __init__(self):
         

@@ -1,5 +1,6 @@
 from apis import SocialMediaFactory
 
+# Servicio de redes Sociales para publicar y obtener posts con las apis de las redes sociales
 class SocialMediaService:
     def __init__(self):
         self.factory = SocialMediaFactory()

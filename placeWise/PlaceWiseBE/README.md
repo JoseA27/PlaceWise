@@ -3,9 +3,6 @@
 Estructura básica: https://github.com/vintasoftware/django-react-boilerplate/tree/main/backend
 s3: https://github.com/etianen/django-s3-storage/tree/master
 
-## Diagrama 
-![alt text](<../../imagenes/DiagramaBE.png>)
-
 ## Estructura de Carpetas
 
 - **app**: Contiene las aplicaciones de Django.
@@ -48,7 +45,12 @@ PlaceWiseBE/
 │       │   ├── SolicitudesPromotor.py
 │       │   └── __init__.py
 │       ├── repositories/
-│       │   └── property_repository.py
+│       │   ├── historial_promotor_repository.py
+│       │   ├── multimedia_repository.py
+│       │   ├── promotor_repository.py
+│       │   ├── property_repository.py
+│       │   ├── propiedad_promotor_repository.py
+│       │   └── solicitud_repository.py
 │       ├── services/
 │       │   ├── cognito_service.py
 │       │   ├── hubspot_service.py
@@ -57,28 +59,21 @@ PlaceWiseBE/
 │       │   └── social_media_service.py
 │       ├── users/
 │       │   └── admin.py
-│       ├── __pycache__/
-│       │   ├── services.cpython-312.pyc
-│       │   ├── urls.cpython-312.pyc
-│       │   ├── views.cpython-312.pyc
-│       │   └── __init__.cpython-312.pyc
+│       ├── views/
+│       │   ├── historialPromotorView.py
+│       │   ├── multimediaPorPropiedadView.py
+│       │   ├── promotoresView.py
+│       │   ├── propiedadesPorPromotorView.py
+│       │   ├── propiedadesView.py
+│       │   └── solicitudesView.py
 │       ├── apps.py
 │       ├── serializers.py
 │       ├── tests.py
 │       ├── urls.py
-│       ├── views.py
 │       └── __init__.py
 ├── mongo-init-scripts/
-│   ├── Costa_Rica_Real_Estate_Dataset.csv
 │   └── init-mongo.js
 ├── placeWise/
-│   ├── __pycache__/
-│   │   ├── settings.cpython-310.pyc
-│   │   ├── settings.cpython-312.pyc
-│   │   ├── urls.cpython-312.pyc
-│   │   ├── wsgi.cpython-312.pyc
-│   │   ├── __init__.cpython-310.pyc
-│   │   └── __init__.cpython-312.pyc
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
@@ -112,6 +107,11 @@ Aplicación principal de la API REST.
   - **migrations/**: Migraciones de la base de datos.
   - **repositories/**:
     - **property_repository.py**: Repositorio de la aplicación.
+    - **promotor_repository.py**: Repositorio de Promotor.
+    - **historial_promotor_repository.py**: Repositorio de Historial de Promotor.
+    - **multimedia_repository.py**: Repositorio de Multimedia.
+    - **propiedad_promotor_repository.py**: Repositorio de Propiedades por Promotor.
+    - **solicitud_repository.py**: Repositorio de Solicitudes.
   - **models/**:
     - **HistorialPromotor.py**: Modelo de Historial de Promotor.
     - **MultimediaPorPropiedad.py**: Modelo de Multimedia por Propiedad.
@@ -134,6 +134,13 @@ Aplicación principal de la API REST.
     - **cognito_service.py**: Servicio de Cognito para autenticación de usuarios.
   - **users/**:
     - **admin.py**: Configuración del administrador de usuarios.
+  - **views/**:
+    - **historialPromotorView.py**: Vista de Historial de Promotor.
+    - **multimediaPorPropiedadView.py**: Vista de Multimedia por Propiedad.
+    - **promotoresView.py**: Vista de Promotores.
+    - **propiedadesPorPromotorView.py**: Vista de Propiedades por Promotor.
+    - **propiedadesView.py**: Vista de Propiedades.
+    - **solicitudesView.py**: Vista de Solicitudes.
   - **apps.py**: Configuración de la aplicación.
   - **models.py**: Modelos de la aplicación.
   - **serializers.py**: Serializadores de la aplicación.

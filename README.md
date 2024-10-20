@@ -490,3 +490,23 @@ Modelado de las collection con Djongo (ORM): https://github.com/JoseA27/PlaceWis
 ### Link del Script de inicialización para la base de datos:
 
 https://github.com/JoseA27/PlaceWise/tree/main/placeWise/PlaceWiseBE/mongo-init-scripts
+
+## Diseño del backend 
+
+### Diagrama de Clases y Capas
+![alt text](imagenes/DiagramaBE.png)
+
+### Descripción de Capas
+
+1. **Capa de Views (Controllers)**: Esta capa se encarga de recibir las peticiones HTTP, procesarlas y enviar una respuesta adecuada. Los controladores interactúan con los servicios para realizar operaciones de negocio y devolver los resultados a los clientes.
+2. **Capa de Auth** : En esta capa se maneja la autenticación y autorización de los usuarios. Se encarga de validar los tokens JWT y verificar los permisos de los usuarios para acceder a ciertas rutas o recursos.
+3. **Capa de Services**: En esta capa se encuentran los servicios que contienen la lógica de negocio de la aplicación. Los servicios se encargan de procesar las solicitudes de los controladores, interactuar con la capa de acceso a datos y devolver los resultados.
+   
+   + **3rd Party Services**: En esta capa se encuentran los servicios de terceros que se utilizan para integraciones con APIs externas, como Google Maps, AWS S3, etc.  
+  
+4. **Capa de Repositories**: Los repositorios son responsables de interactuar con la base de datos y realizar operaciones de lectura y escritura. Los repositorios se comunican con la capa de servicios para obtener y almacenar datos.
+5. **Capa de Models**: En esta capa se encuentran los modelos de datos que representan las entidades de la aplicación. Los modelos definen la estructura de los datos y las relaciones entre ellos.
+6. **Capa API**: La capa API define las API externas de la aplicación que permite a srvice de terceros interactuar con la aplicación. La capa API se comunica con los controladores para procesar las solicitudes y enviar las respuestas.
+   
+### Boilerplate
+Link al README del boilerplate de BE: https://github.com/JoseA27/PlaceWise/tree/main/placeWise/PlaceWiseBE

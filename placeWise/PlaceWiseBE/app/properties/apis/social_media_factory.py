@@ -3,6 +3,7 @@ from .twitter_adapter import TwitterAdapter
 from .instagram_adapter import InstagramAdapter
 from .tiktok_adapter import TikTokAdapter
 
+# Patrón Factory para obtener los adaptadores de las redes sociales
 class SocialMediaFactory:
     @staticmethod
     def get_adapter(social_media_type):
